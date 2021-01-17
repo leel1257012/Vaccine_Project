@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
-public abstract class Unit : MonoBehaviour
-{
 
+public abstract class VirusClass : MonoBehaviour
+{
     protected Coroutine CurrentRoutine { get; private set; }
     private Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
 
     public float Health { get; protected set; }
     public float MaxHealth { get; protected set; }
+
+    public bool Invincible = false;
 
     protected Animator animator;
 
@@ -28,7 +27,7 @@ public abstract class Unit : MonoBehaviour
 
     private void Update()
     {
-        if(CurrentRoutine == null)
+        if (CurrentRoutine == null)
         {
             NextRoutine();
         }
@@ -38,10 +37,13 @@ public abstract class Unit : MonoBehaviour
     {
         damage += UnityEngine.Random.Range(-1, 2);
         Health -= damage;
-        if(Health < 0)
-        {
+        if (Health <= 0) Destroy(gameObject);
 
-        }
+    }
+
+    protected Vector3 GetObjectPos()
+    {
+        return gameObject.transform.position;
     }
 
 
@@ -78,7 +80,7 @@ public abstract class Unit : MonoBehaviour
     protected IEnumerator MoveRoutine(Vector3 destination, float time, AnimationCurve curve)
     {
         Vector3 startPosition = transform.position;
-        Debug.Log(startPosition);
+        //Debug.Log(startPosition);
         for (float t = 0; t <= time; t += Time.deltaTime)
         {
             transform.position =
@@ -93,3 +95,4 @@ public abstract class Unit : MonoBehaviour
         yield return new WaitForSeconds(time);
     }
 }
+
