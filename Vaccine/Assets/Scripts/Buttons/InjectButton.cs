@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class InjectButton : MonoBehaviour
 {
-    public GameObject COVID19;
+    public GameObject COVID19, COVID19_2;
+    public bool gameStart = false;
 
     private void OnMouseUpAsButton()
     {
+        gameStart = true;
         Debug.Log("Game Start");
         COVID19.SetActive(true);
+        COVID19_2.SetActive(true);
     }
 
     // Start is called before the first frame update
