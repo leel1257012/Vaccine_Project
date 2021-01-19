@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class rangeAttack : MonoBehaviour
 {
+    private void Start()
+    {
+        Destroy(gameObject, 10);
+    }
+
     [SerializeField]
     private float damage;
     private void OnTriggerEnter2D(Collider2D collision)

@@ -37,8 +37,9 @@ public class LeukocyteUnit : Unit
 
     private IEnumerator Fire(float range, float interval)
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Row1");
-        //GameObject temp;
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Virus");
+        GameObject temp = null;
+        bool find = false;
 
         if (objects.Length != 0)
         {
@@ -46,12 +47,18 @@ public class LeukocyteUnit : Unit
             foreach (GameObject element in objects)
             {
                 float dist = Vector3.Distance(element.transform.position, GetObjectPos());
-                if (dist < min)
+                float yDist = Mathf.Abs(element.transform.position.y - GetObjectPos().y);
+                if (dist < min && yDist <= 1)
                 {
-                    GameObject cur = Instantiate(bullet, shootPos, Quaternion.identity);
-                    cur.GetComponent<Rigidbody2D>().velocity = -(GetObjectPos() - element.transform.position);
-                    break;
+                    temp = element;
+                    min = dist;
+                    find = true;
                 }
+            }
+            if (find)
+            {
+                GameObject cur = Instantiate(bullet, shootPos, Quaternion.identity);
+                cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos());
             }
 
 
