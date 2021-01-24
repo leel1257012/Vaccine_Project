@@ -6,7 +6,7 @@ public class MozziPichi : Unit
 {
 
     private float interval = 3.0f;
-    private float knockBack = 3.0f;
+    private float knockBack = 5.0f;
     [SerializeField]
     private float scaleX = 2f;
     [SerializeField]
@@ -15,6 +15,7 @@ public class MozziPichi : Unit
     private float ogX;
     private float ogY;
 
+    public bool increase = false;
 
     protected override void Start()
     {
@@ -31,16 +32,6 @@ public class MozziPichi : Unit
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<VirusClass>() != null)
-        {
-            //Debug.Log("1:" + collision.name);
-            //Debug.Log("2:" + collision.gameObject.name);
-            //collision.transform.Translate(new Vector3(3, 0, 0));
-            collision.transform.position += new Vector3(3, 0, 0);
-        }
-    }
 
     protected override Queue<IEnumerator> DecideNextRoutine()
     {
@@ -69,6 +60,8 @@ public class MozziPichi : Unit
         float tempX = 0;
         float tempY = 0;
 
+        increase = true;
+
         for (float t = 0; t < 3f && gameObject.transform.localScale.x < scaleX; t += Time.deltaTime)
         {
             tempX = scaleX / (expandTime / 0.01f);
@@ -80,14 +73,31 @@ public class MozziPichi : Unit
             gameObject.transform.localScale += new Vector3(tempX, tempY, 0);
             yield return null;
         }
-                
-        yield return null;
+
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Virus");
+
+        if (objects.Length != 0)
+        {
+            float min = 1.5f;
+            foreach (GameObject element in objects)
+            {
+                float dist = Vector3.Distance(element.transform.position, GetObjectPos());
+                if (dist < min)
+                {
+                    element.transform.position += new Vector3(knockBack, 0, 0);
+                }
+            }
+
+            yield return null;
+        }
     }
 
     private IEnumerator Contract(float interval)
     {
         float tempX = 0;
         float tempY = 0;
+
+        increase = false;
 
         for (float t = 0; t < 3f && gameObject.transform.localScale.x > ogX; t += Time.deltaTime)
         {
@@ -107,6 +117,11 @@ public class MozziPichi : Unit
     private IEnumerator IdleRoutine(float time)
     {
         yield return new WaitForSeconds(time);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.attachedRigidbody.AddForce(10f * new Vector2(1,0));
     }
 
 }

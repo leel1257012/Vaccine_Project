@@ -11,6 +11,8 @@ public abstract class VirusClass : MonoBehaviour
     public float Health { get; protected set; }
     public float MaxHealth { get; protected set; }
 
+    protected bool collided = false;
+
     public bool Invincible = false;
 
     protected Animator animator;
@@ -94,5 +96,36 @@ public abstract class VirusClass : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
     }
+
+    //protected void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    collided = true;
+        
+    //}
+
+    //protected void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    collided = false;
+        
+    //}
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<Unit>() != null) collided = true;
+
+        //if(collision.gameObject.GetComponent<MozziPichi>() != null
+        //    && collision.gameObject.)
+        //{
+        //    Debug.Log("Hit");
+        //}
+
+    }
+
+    protected void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Unit>() != null) collided = false;
+
+    }
+
 }
 

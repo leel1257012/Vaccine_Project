@@ -22,14 +22,24 @@ public class COVID19 : VirusClass
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
 
-        nextRoutines.Enqueue(NewActionRoutine(Move()));
+        if(!collided) nextRoutines.Enqueue(NewActionRoutine(Move()));
+        else
+        {
+            nextRoutines.Enqueue(NewActionRoutine(IdleRoutine(0f)));
+        }
 
         return nextRoutines;
     }
 
     private IEnumerator Move()
     {
-        yield return MoveRoutine(GetObjectPos() + new Vector3(-1, 0, 0), 1f);
+        yield return MoveRoutine(GetObjectPos() + new Vector3(-0.1f, 0, 0), 0.1f);
+
+    }
+
+    private IEnumerator IdleRoutine(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
 }
