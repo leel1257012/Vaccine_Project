@@ -548,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 6080862573611122855, guid: 78c81c223891ac545a89b7d9e3c39ab2,
         type: 3}
       propertyPath: m_TagString
-      value: Row1
+      value: Virus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c81c223891ac545a89b7d9e3c39ab2, type: 3}
@@ -1617,7 +1617,7 @@ PrefabInstance:
     - target: {fileID: 6080862573611122855, guid: 78c81c223891ac545a89b7d9e3c39ab2,
         type: 3}
       propertyPath: m_TagString
-      value: Row2
+      value: Virus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c81c223891ac545a89b7d9e3c39ab2, type: 3}
