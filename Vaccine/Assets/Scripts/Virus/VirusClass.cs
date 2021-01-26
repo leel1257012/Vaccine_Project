@@ -37,7 +37,6 @@ public abstract class VirusClass : MonoBehaviour
 
     public virtual void GetDamaged(float damage)
     {
-        damage += UnityEngine.Random.Range(-1, 2);
         Health -= damage;
         if (Health <= 0) Destroy(gameObject);
 

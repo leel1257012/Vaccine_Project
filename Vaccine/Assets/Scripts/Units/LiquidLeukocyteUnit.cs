@@ -8,9 +8,9 @@ public class LiquidLeukocyteUnit : Unit
     private GameObject bullet;
     [SerializeField]
     private float range = 10.0f;
-    [SerializeField]
-    private float interval = 1.0f;
     private Vector3 shootPos;
+    private float attackInterval = 1.0f;
+    private int debuffCount = 0;
 
     protected override void Start()
     {
@@ -21,7 +21,6 @@ public class LiquidLeukocyteUnit : Unit
 
     public override void GetDamaged(float damage)
     {
-
         if (!Invincible) base.GetDamaged(damage);
 
     }
@@ -30,7 +29,19 @@ public class LiquidLeukocyteUnit : Unit
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
 
-        nextRoutines.Enqueue(NewActionRoutine(FireAny(range, interval)));
+        if (debuff && debuffCount < 4)
+        {
+            nextRoutines.Enqueue(NewActionRoutine(FireAny(range, attackInterval + 1)));
+        }
+        else
+        {
+            debuffCount = 0;
+            debuff = false;
+            nextRoutines.Enqueue(NewActionRoutine(FireAny(range, attackInterval)));
+
+        }
+
+        
 
         return nextRoutines;
     }

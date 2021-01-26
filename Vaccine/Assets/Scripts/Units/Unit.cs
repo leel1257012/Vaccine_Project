@@ -15,6 +15,8 @@ public abstract class Unit : MonoBehaviour
 
     public bool Invincible = false;
 
+    public bool debuff = false;
+
     protected Animator animator;
 
     protected Collider2D col;
@@ -37,8 +39,8 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void GetDamaged(float damage)
     {
-        damage += UnityEngine.Random.Range(-1, 2);
         Health -= damage;
+        Debug.Log(gameObject.name + ":" + Health);
         if (Health <= 0) Destroy(gameObject);
     }
 

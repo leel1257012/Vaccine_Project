@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Unit2.unity
+- path: Assets/Scenes/VirusHJ.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

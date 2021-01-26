@@ -9,7 +9,8 @@ public class LeukocyteUnit : Unit
     [SerializeField]
     private float range = 10.0f;
     [SerializeField]
-    private float interval = 1.0f;
+    private float attackInterval = 1.0f;
+    private int debuffCount = 0;
     private Vector3 shootPos;
 
     protected override void Start()
@@ -30,7 +31,18 @@ public class LeukocyteUnit : Unit
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
 
-        nextRoutines.Enqueue(NewActionRoutine(Fire(range, interval)));
+        if (debuff && debuffCount < 2)
+        {
+            debuffCount++;
+            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackInterval + 1)));
+        }
+        else
+        {
+            debuffCount = 0;
+            debuff = false;
+            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackInterval)));
+
+        }
 
         return nextRoutines;
     }
