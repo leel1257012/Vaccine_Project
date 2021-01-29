@@ -5,12 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class Virus
 {
-    public int spawnTime;
+    //public int spawnTime;
     public VirusType virustype;
 }
 
 public enum VirusType
 {
+    Empty,
     Virus_Cough,
     Virus_Fever,
     Virus_RedEyes,

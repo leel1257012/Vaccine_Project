@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject draggingObject;
     public GameObject currentContainer;
+    public bool empty = true;
 
     public static GameManager instance;
 
@@ -37,12 +38,9 @@ public class GameManager : MonoBehaviour
             int x = currentContainer.GetComponent<ObjectContainer>().x - 1;
             int y = currentContainer.GetComponent<ObjectContainer>().y - 1;
 
-            array[x, y] = (int)draggingObject.GetComponent<objectDragging>().card.virus.virustype;
-            
+            array[y, x] = (int)draggingObject.GetComponent<objectDragging>().card.virus.virustype;
 
-
-
-
+            empty = false;
 
             currentContainer.GetComponent<ObjectContainer>().isFull = true;
 
