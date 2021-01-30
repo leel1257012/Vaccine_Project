@@ -20,6 +20,8 @@ public abstract class VirusClass : MonoBehaviour
     protected Collider2D col;
     protected Rigidbody2D rb;
 
+    protected Collider2D target;
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
@@ -110,7 +112,11 @@ public abstract class VirusClass : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Unit>() != null) collided = true;
+        if (collision.GetComponent<Unit>() != null)
+        {
+            collided = true; 
+            target = collision;
+        }
 
         //if(collision.gameObject.GetComponent<MozziPichi>() != null
         //    && collision.gameObject.)
