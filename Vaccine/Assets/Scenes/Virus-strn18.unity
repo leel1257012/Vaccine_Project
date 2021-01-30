@@ -5171,6 +5171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719008c2a00a69240b006111a72b95ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oriSpeed: 0
   Invincible: 0
   damage: 1
   sweatRange: {fileID: 1897500708}

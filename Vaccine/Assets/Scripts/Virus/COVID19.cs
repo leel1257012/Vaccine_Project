@@ -9,6 +9,8 @@ public class COVID19 : VirusClass
     {
         base.Start();
         MaxHealth = Health = 30;
+        oriSpeed = 0.1f;
+        speed = oriSpeed;
     }
 
     public override void GetDamaged(float damage)
@@ -33,7 +35,7 @@ public class COVID19 : VirusClass
 
     private IEnumerator Move()
     {
-        yield return MoveRoutine(GetObjectPos() + new Vector3(-0.1f, 0, 0), 0.1f);
+        yield return MoveRoutine(GetObjectPos() + new Vector3(-speed, 0, 0), 0.1f);
 
     }
 

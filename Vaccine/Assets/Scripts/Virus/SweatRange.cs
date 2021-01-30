@@ -14,8 +14,7 @@ public class SweatRange : MonoBehaviour
     {
         parentPos = new Queue<Vector3>();
     }
-
-    // Update is called once per frame
+        
     void Update()
     {
         passedTime += Time.deltaTime;

@@ -16,8 +16,9 @@ public class SweatBacteria : VirusClass
     {
         base.Start();
         MaxHealth = Health = 30;
+        oriSpeed = 0.1f;
+        speed = oriSpeed;
     }
-
 
     public override void GetDamaged(float damage)
     {
@@ -42,7 +43,7 @@ public class SweatBacteria : VirusClass
     {
         DetectSweat();
         
-        yield return MoveRoutine(GetObjectPos() + new Vector3(-0.1f, 0, 0), 0.1f);
+        yield return MoveRoutine(GetObjectPos() + new Vector3(-speed, 0, 0), 0.1f);
 
     }
 
@@ -71,7 +72,9 @@ public class SweatBacteria : VirusClass
         {
             RaycastHit2D hit = hits[i];
             if(hit.transform.tag == "Virus")
-                Debug.Log(hit.transform.name + " speed up");
+            {
+                hit.transform.GetComponent<VirusClass>().ChangeSpeed(4.0f);
+            }
         }
     }
 }

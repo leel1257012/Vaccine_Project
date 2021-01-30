@@ -11,6 +11,10 @@ public abstract class VirusClass : MonoBehaviour
     public float Health { get; protected set; }
     public float MaxHealth { get; protected set; }
 
+    public float speed { get; protected set; }
+    public float oriSpeed;
+    int speedBuffed = 0;
+
     protected bool collided = false;
 
     public bool Invincible = false;
@@ -130,6 +134,20 @@ public abstract class VirusClass : MonoBehaviour
     {
         if (collision.GetComponent<Unit>() != null) collided = false;
 
+    }
+
+    public void ChangeSpeed(float multiple)
+    {
+        speed = oriSpeed * multiple;
+        speedBuffed++;
+        Invoke("RestoreSpeed", 0.5f);
+    }
+
+    void RestoreSpeed()
+    {
+        speedBuffed--;
+        if (speedBuffed == 0)
+            speed = oriSpeed;
     }
 
 }
