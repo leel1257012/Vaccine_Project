@@ -13,6 +13,12 @@ public class CoughBacteria : VirusClass
         MaxHealth = Health = 30;
     }
 
+    public override void GetDamaged(float damage)
+    {
+
+        if (!Invincible) base.GetDamaged(damage);
+
+    }
     protected override Queue<IEnumerator> DecideNextRoutine()
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
