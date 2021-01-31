@@ -6,6 +6,7 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
+    private GameManager gameManager;
 
     protected Coroutine CurrentRoutine { get; private set; }
     private Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
@@ -24,6 +25,7 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void Start()
     {
+        gameManager = GameManager.instance;
         animator = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public abstract class Unit : MonoBehaviour
 
     private void Update()
     {
-        if(CurrentRoutine == null)
+        if(CurrentRoutine == null && gameManager.start)
         {
             NextRoutine();
         }

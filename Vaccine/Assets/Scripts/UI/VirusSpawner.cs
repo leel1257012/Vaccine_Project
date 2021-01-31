@@ -6,7 +6,7 @@ public class VirusSpawner : MonoBehaviour
 {
     public List<GameObject> virusPrefabs;
     public List<GameObject> spawnPoints;
-    public List<Virus> viruses;
+    //public List<Virus> viruses;
     public GameObject spawner;
     private GameManager gameManager;
     private int i, j;
