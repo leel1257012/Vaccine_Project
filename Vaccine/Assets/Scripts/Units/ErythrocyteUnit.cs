@@ -21,7 +21,7 @@ public class ErythrocyteUnit : Unit
 
     private IEnumerator Move()
     {
-        if (GameObject.Find("InjectButton").GetComponent<InjectButton>().gameStart == true)
+        if (gameManager.start)
             yield return MoveRoutine(GetObjectPos() + new Vector3(3, 0, 0), 10f);
     }
 

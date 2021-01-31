@@ -64,8 +64,11 @@ public class LiquidLeukocyteUnit : Unit
                 }
             }
 
-            GameObject cur = Instantiate(bullet, shootPos, Quaternion.identity);
-            cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos());
+            if (temp != null)
+            {
+                GameObject cur = Instantiate(bullet, shootPos, Quaternion.identity);
+                cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos());
+            }
 
 
         }

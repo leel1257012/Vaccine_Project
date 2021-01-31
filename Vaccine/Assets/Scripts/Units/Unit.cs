@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    private GameManager gameManager;
+    protected GameManager gameManager;
 
     protected Coroutine CurrentRoutine { get; private set; }
     private Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
@@ -85,7 +85,6 @@ public abstract class Unit : MonoBehaviour
     protected IEnumerator MoveRoutine(Vector3 destination, float time, AnimationCurve curve)
     {
         Vector3 startPosition = transform.position;
-        Debug.Log(startPosition);
         for (float t = 0; t <= time; t += Time.deltaTime)
         {
             transform.position =

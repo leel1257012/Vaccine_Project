@@ -33,7 +33,7 @@ public class VirusSpawner : MonoBehaviour
             {
                 if (arr[y,x] != 0)
                 {
-                    Instantiate(virusPrefabs[arr[y, x]], spawnPoints[y].transform.position, Quaternion.identity, spawner.transform);
+                    Instantiate(virusPrefabs[arr[y, x]], spawnPoints[y].transform.position, Quaternion.identity);
                     //Debug.Log("virus: " + arr[y, x] + '\n');
                     //Debug.Log("spawner: " + spawnPoints[y].transform.position + '\n');
                     yield return new WaitForSeconds(0.1f);
