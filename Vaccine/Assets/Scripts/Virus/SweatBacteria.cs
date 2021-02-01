@@ -73,7 +73,7 @@ public class SweatBacteria : VirusClass
             RaycastHit2D hit = hits[i];
             if(hit.transform.tag == "Virus")
             {
-                hit.transform.GetComponent<VirusClass>().ChangeSpeed(4.0f);
+                hit.transform.GetComponent<VirusClass>().ChangeSpeed(1.3f);
             }
         }
     }
