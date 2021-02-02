@@ -20,7 +20,7 @@ public class MozziPichi : Unit
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 3;
+        MaxHealth = Health = 300;
         ogX = gameObject.transform.localScale.x;
         ogY = gameObject.transform.localScale.y;
     }
@@ -78,12 +78,14 @@ public class MozziPichi : Unit
 
         if (objects.Length != 0)
         {
-            float min = 1.5f;
+            float min = 3f;
             foreach (GameObject element in objects)
             {
                 float dist = Vector3.Distance(element.transform.position, GetObjectPos());
                 if (dist < min)
                 {
+
+                    Debug.Log(dist);
                     element.transform.position += new Vector3(knockBack, 0, 0);
                 }
             }

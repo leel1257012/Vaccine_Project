@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public GameObject object_Drag;
-    public GameObject object_Game;
+    //public GameObject object_Game;
     public Canvas canvas;
     public Image backgroundImage;
     private GameObject objectDragInstance;

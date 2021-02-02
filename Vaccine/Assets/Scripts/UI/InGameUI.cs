@@ -38,6 +38,7 @@ public class InGameUI : MonoBehaviour
         }
         else
         {
+            gameManager.start = true;
             virusSpawner.SetActive(true);
             TimeStampButton.gameObject.SetActive(false);
             InjectButton.gameObject.SetActive(false);
