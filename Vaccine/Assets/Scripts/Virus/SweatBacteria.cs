@@ -66,7 +66,7 @@ public class SweatBacteria : VirusClass
         maxDistance = Vector3.Distance(sweatRange.position, transform.position);
         hits = Physics2D.RaycastAll(transform.position, sweatRange.position - transform.position, maxDistance);
 
-        Debug.DrawRay(transform.position, sweatRange.position - transform.position, Color.red, 0.3f);
+        //Debug.DrawRay(transform.position, sweatRange.position - transform.position, Color.red, 0.3f);
         
         for (int i = 0; i < hits.Length; i++)
         {
