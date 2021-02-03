@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    public void PlaceObject()
+    public void PlaceObject()       // placing virus
     {
         if(draggingObject != null && currentContainer != null)
         {
