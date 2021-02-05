@@ -77,6 +77,12 @@ public class UnitPlacements : MonoBehaviour, IPointerDownHandler
             isFull = true;
             gameObject.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         }
+        else
+        {
+            gameObject.GetComponent<Image>().color = cur;
+        }
 
     }
+
+    
 }

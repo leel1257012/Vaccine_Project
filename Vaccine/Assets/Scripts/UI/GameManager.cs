@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject draggingObject;
     public GameObject currentContainer;
-    public bool empty = true;
+    public int empty;
+    public bool editMode = false;
 
     public static GameManager instance;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        empty = 0;
     }
 
     public void PlaceObject()       // placing virus
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
 
             array[y, x] = (int)draggingObject.GetComponent<objectDragging>().card.virus.virustype;
 
-            empty = false;
+            empty++;
 
             currentContainer.GetComponent<ObjectContainer>().isFull = true;
 

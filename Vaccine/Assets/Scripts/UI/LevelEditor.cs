@@ -17,8 +17,10 @@ public class LevelEditor : MonoBehaviour
     public InputField stageName;
     public Level newLevel;
     public Level loadLevel;
+    private Level emptyLevel;
     public List<Transform> vaccineUnits;
     public List<GameObject> placements;
+    private GameManager gameManager;
 
 
 
@@ -26,10 +28,17 @@ public class LevelEditor : MonoBehaviour
     {
         instance = this;
         newLevel = ScriptableObject.CreateInstance<Level>();
+        emptyLevel = ScriptableObject.CreateInstance<Level>();
         
     }
 
-    public void CellInstantiate()
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+        gameManager.editMode = true;
+    }
+
+    public void CellInstantiate(Level level)
     {
         foreach (Transform child in vaccineUnits)
         {
@@ -39,14 +48,14 @@ public class LevelEditor : MonoBehaviour
             }
         }
 
-        int index = 0;
+        //int index = 0;
         for(int i=0; i<5; i++)
         {
             for(int j=0; j<8; j++)
             {
                 int temp = i + j * 5;
-                placements[temp].GetComponent<UnitPlacements>().instantiateUnit(loadLevel.arr[i, j]);
-                newLevel.arr[i, j] = loadLevel.arr[i, j];
+                placements[temp].GetComponent<UnitPlacements>().instantiateUnit(level.arr[i, j]);
+                newLevel.arr[i, j] = level.arr[i, j];
                 
             }
         }
@@ -66,13 +75,13 @@ public class LevelEditor : MonoBehaviour
             Debug.Log(e);
             return;
         }
-        CellInstantiate();
+        CellInstantiate(loadLevel);
         Debug.Log("Load complete.");
     }
 
     public void NewLevel()
     {
-        CellInstantiate();
+        CellInstantiate(emptyLevel);
         Debug.Log("Created a new Level");
     }
 
@@ -95,14 +104,22 @@ public class LevelEditor : MonoBehaviour
 
     public void Save()
     {
-        string filePath = Application.dataPath + "/Resources/Levels";
+        if(stageName.text == "")
+        {
+            Debug.Log("Enter a stage name!");
+        }
+        else
+        {
+            string filePath = Application.dataPath + "/Resources/Levels";
 
-        if (!Directory.Exists(filePath))
-            CreateSaveDirectory();
+            if (!Directory.Exists(filePath))
+                CreateSaveDirectory();
 
-        string levelstr = JsonConvert.SerializeObject(newLevel);
-        File.WriteAllText(Application.dataPath + "/Resources/Levels/" + stageName.text + ".json", levelstr);
-        Debug.Log("Save complete.");
+            string levelstr = JsonConvert.SerializeObject(newLevel);
+            File.WriteAllText(Application.dataPath + "/Resources/Levels/" + stageName.text + ".json", levelstr);
+            Debug.Log("Save complete.");
+        }
+        
 
     }
 }

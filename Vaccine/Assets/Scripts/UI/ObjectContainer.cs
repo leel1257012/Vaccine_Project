@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ObjectContainer : MonoBehaviour
+public class ObjectContainer : MonoBehaviour, IPointerDownHandler
 {
-    public bool isFull;
+    public bool isFull = false;
     public GameManager gameManager;
     public Image backgroundImage;
     private Color32 cur = new Color32(0, 0, 0, 83);
     public Vector2 pos;
     public int x, y;
+    public GameObject emptyCard;
 
     IEnumerator Start()
     {
@@ -44,5 +46,18 @@ public class ObjectContainer : MonoBehaviour
         if(!isFull) backgroundImage.color = cur;
 
         //backgroundImage.enabled = false;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(gameManager.draggingObject == null && isFull)
+        {
+            isFull = false;
+            gameManager.empty--;
+            gameManager.array[y - 1, x - 1] = 0;
+            Debug.Log(gameManager.array[y, x]);
+            backgroundImage.sprite = emptyCard.GetComponent<Image>().sprite;
+            backgroundImage.color = cur;
+        }
     }
 }
