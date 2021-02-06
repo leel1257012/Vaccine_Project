@@ -80,6 +80,7 @@ public class UnitPlacements : MonoBehaviour, IPointerDownHandler
         else
         {
             gameObject.GetComponent<Image>().color = cur;
+            isFull = false;
         }
 
     }

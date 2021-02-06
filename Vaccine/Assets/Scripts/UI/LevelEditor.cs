@@ -21,14 +21,16 @@ public class LevelEditor : MonoBehaviour
     public List<Transform> vaccineUnits;
     public List<GameObject> placements;
     private GameManager gameManager;
+    public Text coughc, feverc, redEyesc, sneezec, insomniac, sweatc, stuporc, vomitc, baldc, snotc;
+    public InputField coughI, feverI, redEyesI, sneezeI, insomniaI, sweatI, stuporI, vomitI, baldI, snotI;
 
 
 
     private void Awake()
     {
         instance = this;
-        newLevel = ScriptableObject.CreateInstance<Level>();
-        emptyLevel = ScriptableObject.CreateInstance<Level>();
+        newLevel = new Level();
+        emptyLevel = new Level();
         
     }
 
@@ -36,10 +38,14 @@ public class LevelEditor : MonoBehaviour
     {
         gameManager = GameManager.instance;
         gameManager.editMode = true;
+        emptyInputRestriction();
     }
 
     public void CellInstantiate(Level level)
     {
+        selected = false;
+        selectedUnit = 0;
+
         foreach (Transform child in vaccineUnits)
         {
             if (child.childCount > 0)
@@ -59,6 +65,20 @@ public class LevelEditor : MonoBehaviour
                 
             }
         }
+
+        coughc.text = level.cough.ToString();
+        feverc.text = level.fever.ToString();
+        redEyesc.text = level.redEyes.ToString();
+        sneezec.text = level.sneeze.ToString();
+        insomniac.text = level.insomnia.ToString();
+        sweatc.text = level.sweat.ToString();
+        stuporc.text = level.stupor.ToString();
+        vomitc.text = level.vomit.ToString();
+        baldc.text = level.bald.ToString();
+        snotc.text = level.snot.ToString();
+
+        applyRestriction();
+        emptyInputRestriction();
         
     }
 
@@ -82,6 +102,7 @@ public class LevelEditor : MonoBehaviour
     public void NewLevel()
     {
         CellInstantiate(emptyLevel);
+        newLevel = new Level();
         Debug.Log("Created a new Level");
     }
 
@@ -121,5 +142,49 @@ public class LevelEditor : MonoBehaviour
         }
         
 
+    }
+
+    public void applyRestrictionButton()
+    {
+        coughc.text = coughI.text;
+        feverc.text = feverI.text;
+        redEyesc.text = redEyesI.text;
+        sneezec.text = sneezeI.text;
+        insomniac.text = insomniaI.text;
+        sweatc.text = sweatI.text;
+        stuporc.text = stuporI.text;
+        vomitc.text = vomitI.text;
+        baldc.text = baldI.text;
+        snotc.text = snotI.text;
+
+        applyRestriction();
+    }
+
+    public void applyRestriction()
+    {
+        newLevel.cough = int.Parse(coughc.text);
+        newLevel.fever = int.Parse(feverc.text);
+        newLevel.redEyes = int.Parse(redEyesc.text);
+        newLevel.sneeze = int.Parse(sneezec.text);
+        newLevel.insomnia = int.Parse(insomniac.text);
+        newLevel.sweat = int.Parse(sweatc.text);
+        newLevel.stupor = int.Parse(stuporc.text);
+        newLevel.vomit = int.Parse(vomitc.text);
+        newLevel.bald = int.Parse(baldc.text);
+        newLevel.snot = int.Parse(snotc.text);
+    }
+
+    public void emptyInputRestriction()
+    {
+        coughI.text = "0";
+        feverI.text = "0";
+        redEyesI.text = "0";
+        sneezeI.text = "0";
+        insomniaI.text = "0";
+        sweatI.text = "0";
+        stuporI.text = "0";
+        vomitI.text = "0";
+        baldI.text = "0";
+        snotI.text = "0";
     }
 }

@@ -32,7 +32,7 @@ public class UnitCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         levelEditor.selectedUnit = (int)unit.unitType;
         levelEditor.selected = true;
         //Debug.Log(levelEditor.selected);
-        Debug.Log(unit.unitType + " selected");
+        Debug.Log(Time.deltaTime + " " + unit.unitType + " selected");
         
         
         //objectDragInstance = Instantiate(object_Drag, canvas.transform);
