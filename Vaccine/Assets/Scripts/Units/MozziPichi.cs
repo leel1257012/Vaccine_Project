@@ -5,7 +5,7 @@ using UnityEngine;
 public class MozziPichi : Unit
 {
 
-    private float interval = 3.0f;
+    private float interval = 5.0f;
     private float knockBack = 5.0f;
     [SerializeField]
     private float scaleX = 2f;
@@ -20,7 +20,7 @@ public class MozziPichi : Unit
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 300;
+        MaxHealth = Health = 9;
         ogX = gameObject.transform.localScale.x;
         ogY = gameObject.transform.localScale.y;
     }
@@ -46,7 +46,7 @@ public class MozziPichi : Unit
         else
         {
             nextRoutines.Enqueue(NewActionRoutine(Expand(3f)));
-            nextRoutines.Enqueue(NewActionRoutine(IdleRoutine(interval)));
+            nextRoutines.Enqueue(NewActionRoutine(IdleRoutine(2f)));
         }
 
 
@@ -85,7 +85,7 @@ public class MozziPichi : Unit
                 if (dist < min)
                 {
 
-                    Debug.Log(dist);
+                    //Debug.Log(dist);
                     element.transform.position += new Vector3(knockBack, 0, 0);
                 }
             }
