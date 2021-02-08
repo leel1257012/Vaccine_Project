@@ -9,8 +9,7 @@ public class rangeAttack : MonoBehaviour
         Destroy(gameObject, 10);
     }
 
-    [SerializeField]
-    private float damage;
+    private float damage = 3;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.GetComponent<VirusClass>() != null && !collision.GetComponent<VirusClass>().Invincible)

@@ -5,13 +5,15 @@ using UnityEngine;
 public class Fever : VirusClass
 {
 
-    private float damage = 1.0f;
-    private float interval = 3.0f;
+    private float damage = 7f;
+    private float interval = 0.25f;
 
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 30;
+        oriSpeed = 0.125f;
+        speed = oriSpeed;
+        MaxHealth = Health = 10;
     }
 
     public override void GetDamaged(float damage)
@@ -36,33 +38,43 @@ public class Fever : VirusClass
 
     private IEnumerator SelfDestruct()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Unit");
-        GameObject temp = null;
-        bool find = false;
-
-        if (objects.Length != 0)
+        animator.SetTrigger("Destruct");
+        for (float t = 0; t < interval; t += Time.deltaTime) yield return null;
+        if(target.GetComponent<Unit>() != null)
         {
-            float min = 999f;
-            foreach (GameObject element in objects)
-            {
-                float dist = Vector3.Distance(element.transform.position, GetObjectPos());
-                float yDist = Mathf.Abs(element.transform.position.y - GetObjectPos().y);
-                if (dist < min && yDist <= 1)
-                {
-                    temp = element;
-                    min = dist;
-                    find = true;
-                }
-            }
-            if (find)
-            {
-                for (float t = 0; t < interval; t += Time.deltaTime) yield return null;
-                animator.SetTrigger("Destruct");
-                temp.GetComponent<Unit>().GetDamaged(damage);
-                gameObject.GetComponent<VirusClass>().GetDamaged(MaxHealth);
-            }
-
+            target.GetComponent<Unit>().GetDamaged(damage);
+            
         }
+        gameObject.GetComponent<VirusClass>().GetDamaged(MaxHealth);
+
+
+        //GameObject[] objects = GameObject.FindGameObjectsWithTag("Unit");
+        //GameObject temp = null;
+        //bool find = false;
+
+        //if (objects.Length != 0)
+        //{
+        //    float min = 999f;
+        //    foreach (GameObject element in objects)
+        //    {
+        //        float dist = Vector3.Distance(element.transform.position, GetObjectPos());
+        //        float yDist = Mathf.Abs(element.transform.position.y - GetObjectPos().y);
+        //        if (dist < min && yDist <= 1)
+        //        {
+        //            temp = element;
+        //            min = dist;
+        //            find = true;
+        //        }
+        //    }
+        //    if (find)
+        //    {
+        //        for (float t = 0; t < interval; t += Time.deltaTime) yield return null;
+        //        animator.SetTrigger("Destruct");
+        //        temp.GetComponent<Unit>().GetDamaged(damage);
+        //        gameObject.GetComponent<VirusClass>().GetDamaged(MaxHealth);
+        //    }
+
+        //}
 
         yield return null;
 
@@ -70,7 +82,7 @@ public class Fever : VirusClass
 
     private IEnumerator Move()
     {
-        yield return MoveRoutine(GetObjectPos() + new Vector3(-0.1f, 0, 0), 0.05f);
+        yield return MoveRoutine(GetObjectPos() + new Vector3(-speed, 0, 0), 0.05f);
 
     }
 
