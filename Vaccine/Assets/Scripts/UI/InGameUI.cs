@@ -9,6 +9,7 @@ public class InGameUI : MonoBehaviour
     public GameObject InjectionUI;
     public GameObject virusSpawner;
     public GameObject emptyPanel;
+    public GameObject editPanel;
 
     private GameManager gameManager;
 
@@ -30,7 +31,7 @@ public class InGameUI : MonoBehaviour
 
     public void inject()
     {
-        if(gameManager.empty)
+        if(gameManager.empty == 0)
         {
             TimeStampButton.interactable = false;
             InjectButton.interactable = false;
@@ -42,6 +43,7 @@ public class InGameUI : MonoBehaviour
             virusSpawner.SetActive(true);
             TimeStampButton.gameObject.SetActive(false);
             InjectButton.gameObject.SetActive(false);
+            if(gameManager.editMode) editPanel.gameObject.SetActive(false);
         }
 
     }

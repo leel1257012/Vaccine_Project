@@ -13,6 +13,9 @@ public abstract class Unit : MonoBehaviour
 
     public float Health { get; protected set; }
     public float MaxHealth { get; protected set; }
+    public float OriAttackSpeed { get; protected set; }
+    public float attackSpeedInterval { get; protected set; }
+    private int attackSpeedBuff = 0;
 
     public bool Invincible = false;
 
@@ -97,5 +100,18 @@ public abstract class Unit : MonoBehaviour
     protected IEnumerator WaitRoutine(float time)
     {
         yield return new WaitForSeconds(time);
+    }
+
+    public void ChangeAttackInterval(float multiple)
+    {
+        attackSpeedInterval = OriAttackSpeed * multiple;
+        attackSpeedBuff++;
+        Invoke("RestoreAttackSpeed", 3f);
+    }
+
+    private void RestoreAttackSpeed()
+    {
+        attackSpeedBuff--;
+        if (attackSpeedBuff == 0) attackSpeedInterval = OriAttackSpeed;
     }
 }

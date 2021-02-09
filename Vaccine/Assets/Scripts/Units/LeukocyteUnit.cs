@@ -7,16 +7,17 @@ public class LeukocyteUnit : Unit
     [SerializeField]
     private GameObject bullet;
     [SerializeField]
-    private float range = 10.0f;
-    [SerializeField]
-    private float attackInterval = 1.0f;
+    private float range = 9.5f;
     private int debuffCount = 0;
     private Vector3 shootPos;
+    private float bulletSpeedTravel = 8f;
 
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 3;
+        MaxHealth = Health = 9;
+        OriAttackSpeed = 1.0f;
+        attackSpeedInterval = OriAttackSpeed;
         shootPos = gameObject.transform.position;
     }
 
@@ -31,18 +32,20 @@ public class LeukocyteUnit : Unit
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
 
-        if (debuff && debuffCount < 2)
-        {
-            debuffCount++;
-            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackInterval + 1)));
-        }
-        else
-        {
-            debuffCount = 0;
-            debuff = false;
-            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackInterval)));
+        nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackSpeedInterval)));
 
-        }
+        //if (debuff && debuffCount < 2)
+        //{
+        //    debuffCount++;
+        //    nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackSpeedInterval + 1)));
+        //}
+        //else
+        //{
+        //    debuffCount = 0;
+        //    debuff = false;
+            
+
+        //}
 
         return nextRoutines;
     }
@@ -70,7 +73,7 @@ public class LeukocyteUnit : Unit
             if (find)
             {
                 GameObject cur = Instantiate(bullet, shootPos, Quaternion.identity);
-                cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos());
+                cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos()).normalized * bulletSpeedTravel;
             }
 
 
