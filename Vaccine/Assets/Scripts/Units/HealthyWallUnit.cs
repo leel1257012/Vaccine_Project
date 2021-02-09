@@ -27,7 +27,7 @@ public class HealthyWallUnit : Unit
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

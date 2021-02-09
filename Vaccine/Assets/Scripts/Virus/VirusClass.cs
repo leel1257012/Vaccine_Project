@@ -116,12 +116,11 @@ public abstract class VirusClass : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Unit>() != null)
+        if (collision.GetComponent<Unit>() != null && !(collision.GetComponent<AngryCactus>() != null))
         {
             collided = true; 
             target = collision;
         }
-
         //if(collision.gameObject.GetComponent<MozziPichi>() != null
         //    && collision.gameObject.)
         //{
@@ -132,7 +131,7 @@ public abstract class VirusClass : MonoBehaviour
 
     protected void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Unit>() != null) collided = false;
+        if (collision.GetComponent<Unit>() != null && !(collision.GetComponent<AngryCactus>() != null)) collided = false;
 
     }
 
