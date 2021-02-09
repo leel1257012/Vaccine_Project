@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public abstract class Unit : MonoBehaviour
@@ -25,6 +26,9 @@ public abstract class Unit : MonoBehaviour
 
     protected Collider2D col;
     protected Rigidbody2D rb;
+
+    [SerializeField]
+    private GameObject status;
 
     protected virtual void Start()
     {
@@ -113,5 +117,19 @@ public abstract class Unit : MonoBehaviour
     {
         attackSpeedBuff--;
         if (attackSpeedBuff == 0) attackSpeedInterval = OriAttackSpeed;
+    }
+
+    private void OnMouseEnter()
+    {
+        status.SetActive(true);
+        status.GetComponent<Transform>().position = Input.mousePosition;
+
+        //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
+        status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
+        status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+    }
+    private void OnMouseExit()
+    {
+        status.SetActive(false);
     }
 }

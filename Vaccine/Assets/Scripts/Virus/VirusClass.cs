@@ -26,6 +26,9 @@ public abstract class VirusClass : MonoBehaviour
 
     protected Collider2D target;
 
+    [SerializeField]
+    private GameObject status;
+
     protected virtual void Start()
     {
         animator = GetComponent<Animator>();
@@ -148,6 +151,5 @@ public abstract class VirusClass : MonoBehaviour
         if (speedBuffed == 0)
             speed = oriSpeed;
     }
-
 }
 

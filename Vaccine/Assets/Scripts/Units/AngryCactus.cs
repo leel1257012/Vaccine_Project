@@ -15,6 +15,7 @@ public class AngryCactus : Unit
     {
         base.Start();
         MaxHealth = Health = 999;
+        OriAttackSpeed = 3;
     }
 
     public override void GetDamaged(float damage)
