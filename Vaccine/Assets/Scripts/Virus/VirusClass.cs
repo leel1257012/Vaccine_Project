@@ -119,7 +119,9 @@ public abstract class VirusClass : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Unit>() != null && !(collision.GetComponent<AngryCactus>() != null))
+        if (collision.GetComponent<Unit>() != null && !(collision.GetComponent<AngryCactus>() != null)
+            && !(collision.GetComponent<StickyUnit>() != null)
+            && !(collision.GetComponent<ErythrocyteUnit>() != null))
         {
             collided = true; 
             target = collision;
@@ -134,7 +136,9 @@ public abstract class VirusClass : MonoBehaviour
 
     protected void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Unit>() != null && !(collision.GetComponent<AngryCactus>() != null)) collided = false;
+        if (collision.GetComponent<Unit>() != null && !(collision.GetComponent<AngryCactus>() != null)
+            && !(collision.GetComponent<StickyUnit>() != null)
+            && !(collision.GetComponent<ErythrocyteUnit>() != null)) collided = false;
 
     }
 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9011543573782226560}
   m_Layer: 0
   m_Name: Leukocyte
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,6 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Invincible: 0
   debuff: 0
+  status: {fileID: 0}
   bullet: {fileID: 2237358504751950506, guid: 72bd31fabba25e5429a99bdb06ebac93, type: 3}
   range: 10
-  attackInterval: 1

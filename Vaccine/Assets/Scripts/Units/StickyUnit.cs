@@ -4,11 +4,32 @@ using UnityEngine;
 
 public class StickyUnit : Unit
 {
-    // (temp) Place it in row3
+
+    private GameObject cur;
+    private bool colliding = false;
+
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 1;
+        cur = new GameObject();
+        cur.transform.position = gameObject.transform.position;
+        cur.transform.localScale = gameObject.transform.localScale;
+        MaxHealth = Health = 999;
+    }
+
+    private void FixedUpdate()
+    {
+        colliding = false;
+    }
+
+    private void Update()
+    {
+        Debug.Log(cur.transform.position);
+        if (!colliding)
+        {
+            gameObject.transform.position = cur.transform.position;
+            gameObject.transform.localScale = cur.transform.localScale;
+        } 
     }
 
     public override void GetDamaged(float damage)
@@ -37,7 +58,27 @@ public class StickyUnit : Unit
     {
         if (collision.GetComponent<VirusClass>() != null)
         {
+            colliding = true;
+            gameObject.transform.position = new Vector3(cur.transform.position.x, -0.43f, 0);
             gameObject.transform.localScale += new Vector3(0f, 5f, 0f);
+            collision.GetComponent<VirusClass>().ChangeSpeed(0.5f);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<VirusClass>() != null)
+        {
+            colliding = true;
+            collision.GetComponent<VirusClass>().ChangeSpeed(0.5f);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<VirusClass>() != null)
+        {
+            colliding = false;
         }
     }
 
