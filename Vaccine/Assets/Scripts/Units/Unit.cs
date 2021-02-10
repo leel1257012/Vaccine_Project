@@ -36,6 +36,7 @@ public abstract class Unit : MonoBehaviour
         animator = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        status = GameObject.Find("Canvas").transform.Find("Status").gameObject;
     }
 
     private void Update()
@@ -119,17 +120,17 @@ public abstract class Unit : MonoBehaviour
         if (attackSpeedBuff == 0) attackSpeedInterval = OriAttackSpeed;
     }
 
-    //private void OnMouseEnter()
-    //{
-    //    status.SetActive(true);
-    //    status.GetComponent<Transform>().position = Input.mousePosition;
+    private void OnMouseEnter()
+    {
+        status.SetActive(true);
+        status.GetComponent<Transform>().position = Input.mousePosition;
 
-    //    //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
-    //    status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
-    //    status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
-    //}
-    //private void OnMouseExit()
-    //{
-    //    status.SetActive(false);
-    //}
+        //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
+        status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
+        status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+    }
+    private void OnMouseExit()
+    {
+        status.SetActive(false);
+    }
 }

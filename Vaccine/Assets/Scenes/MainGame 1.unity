@@ -7184,37 +7184,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5815987201013058182, guid: 0032ef55e00f5d14191051e3568ccd5b,
+    - target: {fileID: 5815987201013058183, guid: 0032ef55e00f5d14191051e3568ccd5b,
         type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815987201013058182, guid: 0032ef55e00f5d14191051e3568ccd5b,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 5.714286
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815987201013058182, guid: 0032ef55e00f5d14191051e3568ccd5b,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 5.714286
-      objectReference: {fileID: 0}
+      propertyPath: status
+      value: 
+      objectReference: {fileID: 1328821672}
     - target: {fileID: 5815987201013058186, guid: 0032ef55e00f5d14191051e3568ccd5b,
         type: 3}
       propertyPath: m_Name
       value: HealthyWall
       objectReference: {fileID: 0}
-    - target: {fileID: 5815987201013058186, guid: 0032ef55e00f5d14191051e3568ccd5b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815987201013058187, guid: 0032ef55e00f5d14191051e3568ccd5b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3eedde351b9a30e4a8611000f7b0d38a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0032ef55e00f5d14191051e3568ccd5b, type: 3}
 --- !u!4 &1482544912 stripped
@@ -10748,21 +10727,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1031176591992806777, guid: ac0553a89d1f9544ca220335475c67b0,
-        type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 196606448}
-    - target: {fileID: 1031176591992806777, guid: ac0553a89d1f9544ca220335475c67b0,
-        type: 3}
-      propertyPath: status
-      value: 
-      objectReference: {fileID: 1328821672}
-    - target: {fileID: 1031176591992806777, guid: ac0553a89d1f9544ca220335475c67b0,
-        type: 3}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 196606448}
     - target: {fileID: 1031176591992806780, guid: ac0553a89d1f9544ca220335475c67b0,
         type: 3}
       propertyPath: m_Name

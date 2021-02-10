@@ -8,7 +8,7 @@ public class HealthyWallUnit : Unit
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 5;
+        MaxHealth = Health = 20;
     }
 
     public override void GetDamaged(float damage)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class VirusClass : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public abstract class VirusClass : MonoBehaviour
         animator = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        status = GameObject.Find("Canvas").transform.Find("Status").gameObject;
     }
 
     private void Update()
@@ -154,6 +156,20 @@ public abstract class VirusClass : MonoBehaviour
         speedBuffed--;
         if (speedBuffed == 0)
             speed = oriSpeed;
+    }
+
+    private void OnMouseEnter()
+    {
+        status.SetActive(true);
+        status.GetComponent<Transform>().position = Input.mousePosition;
+
+        //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
+        status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
+        //status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+    }
+    private void OnMouseExit()
+    {
+        status.SetActive(false);
     }
 }
 

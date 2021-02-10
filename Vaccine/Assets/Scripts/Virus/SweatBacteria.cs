@@ -15,8 +15,8 @@ public class SweatBacteria : VirusClass
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 30;
-        oriSpeed = 0.1f;
+        MaxHealth = Health = 20;
+        oriSpeed = 0.05f;
         speed = oriSpeed;
     }
 
