@@ -7,8 +7,6 @@ public class DefinitelyNotNeuron : Unit
     [SerializeField]
     private float range = 10.0f;
     [SerializeField]
-    private float attackInterval = 2.0f;
-    [SerializeField]
     private float damage = 2.0f;
     private int debuffCount = 0;
 
@@ -16,6 +14,8 @@ public class DefinitelyNotNeuron : Unit
     {
         base.Start();
         MaxHealth = Health = 9;
+        OriAttackSpeed = 2.0f;
+        attackSpeedInterval = OriAttackSpeed;
     }
 
     public override void GetDamaged(float damage)
@@ -32,13 +32,13 @@ public class DefinitelyNotNeuron : Unit
         if (debuff && debuffCount < 2)
         {
             debuffCount++;
-            nextRoutines.Enqueue(NewActionRoutine(Fire(range, 2 * attackInterval)));
+            nextRoutines.Enqueue(NewActionRoutine(Fire(range, 2 * attackSpeedInterval)));
         }
         else
         {
             debuffCount = 0;
             debuff = false;
-            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackInterval)));
+            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackSpeedInterval)));
         }
 
         return nextRoutines;

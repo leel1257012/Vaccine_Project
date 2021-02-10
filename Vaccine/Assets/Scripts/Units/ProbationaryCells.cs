@@ -8,8 +8,6 @@ public class ProbationaryCells : Unit
     private GameObject bullet;
     [SerializeField]
     private float range = 10.0f;
-    [SerializeField]
-    private float attackInterval = 0.25f;
     private int debuffCount = 0;
     private Vector3 shootPos;
     private int fireCount = 0;
@@ -18,6 +16,8 @@ public class ProbationaryCells : Unit
     {
         base.Start();
         MaxHealth = Health = 5;
+        OriAttackSpeed = 0.25f;
+        attackSpeedInterval = OriAttackSpeed;
         shootPos = gameObject.transform.position;
     }
 
@@ -35,13 +35,13 @@ public class ProbationaryCells : Unit
         if (debuff && debuffCount < 2)
         {
             debuffCount++;
-            nextRoutines.Enqueue(NewActionRoutine(Fire(range, 2 * attackInterval)));
+            nextRoutines.Enqueue(NewActionRoutine(Fire(range, 2 * attackSpeedInterval)));
         }
         else
         {
             debuffCount = 0;
             debuff = false;
-            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackInterval)));
+            nextRoutines.Enqueue(NewActionRoutine(Fire(range, attackSpeedInterval)));
         }
 
         return nextRoutines;
