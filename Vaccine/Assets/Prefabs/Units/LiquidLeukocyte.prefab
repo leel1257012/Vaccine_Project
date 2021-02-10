@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8381977698616945422}
   m_Layer: 0
   m_Name: LiquidLeukocyte
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8381977698616945425}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -145,5 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Invincible: 0
   debuff: 0
+  status: {fileID: 0}
   bullet: {fileID: 2237358504751950506, guid: 72bd31fabba25e5429a99bdb06ebac93, type: 3}
   range: 10

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 827921259606048552}
   m_Layer: 0
   m_Name: ProbationaryCells
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827921259606048531}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8bbd78c8f53b474458ec0dba0163984f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb0122b7e73af3e4dbf8262619374611, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.02, y: 5.02}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 5.02, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Invincible: 0
   debuff: 0
+  status: {fileID: 0}
   bullet: {fileID: 2237358504751950506, guid: 72bd31fabba25e5429a99bdb06ebac93, type: 3}
   range: 10
   attackInterval: 0.25

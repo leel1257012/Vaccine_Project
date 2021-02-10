@@ -25,22 +25,30 @@ public class ErythrocyteUnit : Unit
             yield return MoveRoutine(GetObjectPos() + new Vector3(3, 0, 0), 10f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-        BuffSameRow();
+        if(collision.gameObject.tag == "Virus")
+        {
+            Destroy(gameObject);
+            BuffSameRow();
+        }
+        
     }
     private void BuffSameRow()
     {
-        string row = gameObject.tag;
-        GameObject[] objects = GameObject.FindGameObjectsWithTag(row);
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Unit");
 
         for (int i = 0; i < objects.Length; i++)
         {
-            if (objects[i].name == gameObject.name)
-                continue;
+            if (objects[i].transform.position.y - gameObject.transform.position.y < 1)
+            {
+                //Debug.Log(objects[i].transform.position.y - gameObject.transform.position.y);
+                gameObject.GetComponent<Unit>().ChangeAttackInterval(0.7f);
+                Debug.Log(objects[i].name + " was buffed!");
+            }
+                
 
-            Debug.Log(objects[i].name + " was buffed!");
+            
         }
     }
 
