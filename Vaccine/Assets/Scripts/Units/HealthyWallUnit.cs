@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealthyWallUnit : Unit
 {
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -21,12 +20,9 @@ public class HealthyWallUnit : Unit
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
 
-        //nextRoutines.Enqueue(NewActionRoutine(Fire(range, interval)));
-
         return nextRoutines;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         

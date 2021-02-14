@@ -7,10 +7,11 @@ public class ProbationaryCells : Unit
     [SerializeField]
     private GameObject bullet;
     [SerializeField]
-    private float range = 10.0f;
+    private float range = 7.125f;
     private int debuffCount = 0;
     private Vector3 shootPos;
     private int fireCount = 0;
+    private float bulletSpeedTravel = 12f;
 
     protected override void Start()
     {
@@ -70,7 +71,7 @@ public class ProbationaryCells : Unit
             if (find)
             {
                 GameObject cur = Instantiate(bullet, shootPos, Quaternion.identity);
-                cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos());
+                cur.GetComponent<Rigidbody2D>().velocity = (temp.transform.position - GetObjectPos()).normalized * bulletSpeedTravel;
                 fireCount++;
             }
 

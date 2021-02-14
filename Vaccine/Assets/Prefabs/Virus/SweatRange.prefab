@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4317921368739724261}
-  - component: {fileID: 4317921368739724258}
   - component: {fileID: 4317921368739724263}
+  - component: {fileID: 4317921368739724258}
   m_Layer: 0
   m_Name: SweatRange
   m_TagString: Untagged
@@ -32,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4317921368739724258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4317921368739724259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c1685ab8a2b78b4fb9ca72d5d31f3fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followPos: {x: -1.84, y: 0.74, z: 0}
-  parent: {fileID: 0}
 --- !u!61 &4317921368739724263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72,3 +58,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.82, y: 0.78}
   m_EdgeRadius: 0
+--- !u!114 &4317921368739724258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317921368739724259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1685ab8a2b78b4fb9ca72d5d31f3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followPos: {x: -1.84, y: 0.74, z: 0}
+  parent: {fileID: 1069615249885957474, guid: 9bb7f04e8903ef649af3ced3085f3cdd, type: 3}

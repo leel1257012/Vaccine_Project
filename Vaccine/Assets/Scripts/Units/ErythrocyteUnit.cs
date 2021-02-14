@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ErythrocyteUnit : Unit
 {
-    // Start is called before the first frame update
+    float speed = 0.45f;
     protected override void Start()
     {
         base.Start();
@@ -22,7 +22,7 @@ public class ErythrocyteUnit : Unit
     private IEnumerator Move()
     {
         if (gameManager.start)
-            yield return MoveRoutine(GetObjectPos() + new Vector3(3, 0, 0), 10f);
+            yield return MoveRoutine(GetObjectPos() + new Vector3(speed, 0, 0), 0.1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,8 +42,7 @@ public class ErythrocyteUnit : Unit
         {
             if (objects[i].transform.position.y - gameObject.transform.position.y < 1)
             {
-                //Debug.Log(objects[i].transform.position.y - gameObject.transform.position.y);
-                gameObject.GetComponent<Unit>().ChangeAttackInterval(0.7f);
+                objects[i].GetComponent<Unit>().ChangeAttackInterval(0.77f);
                 Debug.Log(objects[i].name + " was buffed!");
             }
                 

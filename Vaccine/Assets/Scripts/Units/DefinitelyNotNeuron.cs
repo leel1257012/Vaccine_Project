@@ -5,7 +5,7 @@ using UnityEngine;
 public class DefinitelyNotNeuron : Unit
 {    
     [SerializeField]
-    private float range = 10.0f;
+    private float range = 9.5f;
     [SerializeField]
     private float damage = 2.0f;
     private int debuffCount = 0;
