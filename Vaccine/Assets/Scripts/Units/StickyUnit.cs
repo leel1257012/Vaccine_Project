@@ -60,7 +60,7 @@ public class StickyUnit : Unit
         {
             colliding = true;
             gameObject.transform.position = new Vector3(cur.transform.position.x, -0.43f, 0);
-            gameObject.transform.localScale += new Vector3(0f, 5f, 0f);
+            gameObject.transform.localScale = new Vector3(1f, 6f, 1f);
             collision.GetComponent<VirusClass>().ChangeSpeed(0.5f);
         }
     }

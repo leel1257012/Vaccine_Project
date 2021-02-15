@@ -55,7 +55,6 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
             isFull = false;
             gameManager.empty--;
             gameManager.array[y - 1, x - 1] = 0;
-            Debug.Log(gameManager.array[y, x]);
             backgroundImage.sprite = emptyCard.GetComponent<Image>().sprite;
             backgroundImage.color = cur;
         }

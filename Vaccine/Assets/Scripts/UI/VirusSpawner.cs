@@ -31,15 +31,16 @@ public class VirusSpawner : MonoBehaviour
         {
             for (int y = 0; y < i; y++)
             {
-                if (arr[y,x] != 0)
+                if (arr[y, x] != 0)
                 {
                     Instantiate(virusPrefabs[arr[y, x]], spawnPoints[y].transform.position, Quaternion.identity);
                     //Debug.Log("virus: " + arr[y, x] + '\n');
                     //Debug.Log("spawner: " + spawnPoints[y].transform.position + '\n');
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(0f);
                 }
+                else yield return new WaitForSeconds(0f);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(4f);
         }
     }
     //IEnumerator Wait()

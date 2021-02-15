@@ -82,7 +82,8 @@ public class MozziPichi : Unit
             foreach (GameObject element in objects)
             {
                 float dist = Vector3.Distance(element.transform.position, GetObjectPos());
-                if (dist < min)
+                float yDist = Mathf.Abs(element.transform.position.y - gameObject.transform.position.y);
+                if (dist < min && yDist <= 0.9f)
                 {
 
                     //Debug.Log(dist);
