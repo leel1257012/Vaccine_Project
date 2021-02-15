@@ -9,8 +9,6 @@ public class SweatBacteria : VirusClass
 
     RaycastHit2D[] hits;
     float maxDistance = 0.0f;
-    public Transform sweatRange;
-    
 
     protected override void Start()
     {
@@ -44,7 +42,6 @@ public class SweatBacteria : VirusClass
         DetectSweat();
         
         yield return MoveRoutine(GetObjectPos() + new Vector3(-speed, 0, 0), 0.1f);
-
     }
 
     private IEnumerator JustSweating()
@@ -63,15 +60,15 @@ public class SweatBacteria : VirusClass
 
     private void DetectSweat()
     {
-        maxDistance = Vector3.Distance(sweatRange.position, transform.position);
-        hits = Physics2D.RaycastAll(transform.position, sweatRange.position - transform.position, maxDistance);
+        maxDistance = Vector3.Distance(gameObject.transform.GetChild(1).GetComponent<SweatRange>().myPos, transform.position);
+        //maxDistance = Vector3.Distance(sweatRange.position, transform.position);
+        hits = Physics2D.RaycastAll(transform.position, gameObject.transform.GetChild(1).GetComponent<SweatRange>().myPos - transform.position, maxDistance);
+        //hits = Physics2D.RaycastAll(transform.position, sweatRange.position - transform.position, maxDistance);
 
-        //Debug.DrawRay(transform.position, sweatRange.position - transform.position, Color.red, 0.3f);
-        
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit2D hit = hits[i];
-            if(hit.transform.tag == "Virus")
+            if(hit.transform.tag == "Virus" && !(hit.collider.gameObject == gameObject))
             {
                 hit.transform.GetComponent<VirusClass>().ChangeSpeed(1.3f);
             }
