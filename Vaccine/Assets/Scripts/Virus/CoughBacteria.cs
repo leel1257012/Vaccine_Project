@@ -10,8 +10,8 @@ public class CoughBacteria : VirusClass
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 20;
-        oriSpeed = 0.075f;
+        MaxHealth = Health = 30;
+        oriSpeed = 0.1f;
         speed = oriSpeed;
     }
 
