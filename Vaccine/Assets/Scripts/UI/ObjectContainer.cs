@@ -35,7 +35,7 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(gameManager.draggingObject != null && isFull == false && 
-            (editable == true || gameManager.editMode == true))
+            (editable == true || gameManager.editMode == true) && !disabled)
         {
             gameManager.currentContainer = this.gameObject;
             backgroundImage.color = new Color32(56, 0, 0, 152);
@@ -46,7 +46,7 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
     public void OnTriggerExit2D(Collider2D other)
     {
         gameManager.currentContainer = null;
-        if(!isFull) backgroundImage.color = cur;
+        if(!isFull && !disabled) backgroundImage.color = cur;
 
         //backgroundImage.enabled = false;
     }
@@ -54,7 +54,7 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         if(gameManager.draggingObject == null && isFull &&          //empty a full container
-            (editable == true || gameManager.editMode == true))
+            (editable == true || gameManager.editMode == true) && !disabled)
         {
             isFull = false;
             gameManager.empty--;

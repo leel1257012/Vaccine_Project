@@ -31,7 +31,7 @@ public class VirusSpawner : MonoBehaviour
         {
             for (int y = 0; y < i; y++)
             {
-                if (arr[y, x] != 0)
+                if (arr[y, x] != 0 && arr[y,x] != -1)
                 {
                     Instantiate(virusPrefabs[arr[y, x]], spawnPoints[y].transform.position, Quaternion.identity);
                     //Debug.Log("virus: " + arr[y, x] + '\n');
