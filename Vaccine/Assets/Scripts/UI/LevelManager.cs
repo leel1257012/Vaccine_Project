@@ -5,19 +5,12 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public enum VirusRestrictions
+
+    GameManager gameManager;
+
+    private void Start()
     {
-        None,
-        Virus_Cough,
-        Virus_Fever,
-        Virus_RedEyes,
-        Virus_Sneeze,
-        Virus_Insomnia,
-        Virus_Sweat,
-        Virus_Stupor,
-        Virus_Vomit,
-        Virus_Bald,
-        Virus_Snot
+        gameManager = GameManager.instance;
     }
 
 

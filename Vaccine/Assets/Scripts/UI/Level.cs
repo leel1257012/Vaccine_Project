@@ -5,6 +5,7 @@ using UnityEngine;
 public class Level 
 {
     public int[,] arr;
+    public int[,] vir;
 
     public int cough;
     public int fever;
@@ -20,6 +21,7 @@ public class Level
     public Level()
     {
         arr = new int[5, 8];
+        vir = new int[5, 10];
         cough = 0;
         fever = 0;
         redEyes = 0;

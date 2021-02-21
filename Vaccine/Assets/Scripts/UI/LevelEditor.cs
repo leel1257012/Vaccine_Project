@@ -20,25 +20,33 @@ public class LevelEditor : MonoBehaviour
     private Level emptyLevel;
     public List<Transform> vaccineUnits;
     public List<GameObject> placements;
+    public List<GameObject> virusPlacements;
     private GameManager gameManager;
     public Text coughc, feverc, redEyesc, sneezec, insomniac, sweatc, stuporc, vomitc, baldc, snotc;
     public InputField coughI, feverI, redEyesI, sneezeI, insomniaI, sweatI, stuporI, vomitI, baldI, snotI;
+    public List<Image> virusSprites;
 
 
 
     private void Awake()
     {
         instance = this;
+
         newLevel = new Level();
         emptyLevel = new Level();
+
+        
         
     }
 
     private void Start()
     {
         gameManager = GameManager.instance;
-        gameManager.editMode = true;
-        emptyInputRestriction();
+        if (gameManager.editMode)
+        {
+            emptyInputRestriction();
+        }
+        
     }
 
     public void CellInstantiate(Level level)
@@ -82,6 +90,46 @@ public class LevelEditor : MonoBehaviour
         
     }
 
+    public void virusInstantiate(Level level)
+    {
+        gameManager.array = level.vir;
+
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+
+                int temp = j * 5 + i;
+
+                if (level.vir[i, j] != 0)
+                {
+                    if(level.vir[i,j] == -1)
+                    {
+                        virusPlacements[temp].GetComponent<ObjectContainer>().editable = false;
+                        virusPlacements[temp].GetComponent<ObjectContainer>().disabled = true;
+                        virusPlacements[temp].GetComponent<Image>().color = new Color32(255, 0, 0, 83);
+                    }
+                    else
+                    {
+                        virusPlacements[temp].GetComponent<ObjectContainer>().editable = false;
+                        virusPlacements[temp].GetComponent<Image>().sprite =
+                            virusSprites[gameManager.array[i, j]].sprite;
+
+                        virusPlacements[temp].GetComponent<Image>().color =
+                            virusSprites[gameManager.array[i, j]].color;
+
+                        virusPlacements[temp].GetComponent<Image>().preserveAspect = true;
+
+                        virusPlacements[temp].GetComponent<ObjectContainer>().isFull = true;
+
+                        if (level.vir[i, j] != -1) gameManager.empty++;
+                    }
+
+                }
+            }
+        }
+    }
+
     public void LoadLevel()
     {
         try
@@ -95,9 +143,31 @@ public class LevelEditor : MonoBehaviour
             Debug.Log(e);
             return;
         }
+
+       
         CellInstantiate(loadLevel);
+        virusInstantiate(loadLevel);
+
         Debug.Log("Load complete.");
     }
+
+    //public void LoadLevel(string stageName)
+    //{
+    //    try
+    //    {
+    //        string str = File.ReadAllText(Application.dataPath + "/Resources/Levels/" + stageName + ".json");
+    //        loadLevel = JsonConvert.DeserializeObject<Level>(str);
+
+    //    }
+    //    catch (FileNotFoundException e)
+    //    {
+    //        Debug.Log(e);
+    //        return;
+    //    }
+    //    CellInstantiate(loadLevel);
+    //    Debug.Log("Load complete.");
+    //}
+
 
     public void NewLevel()
     {
@@ -135,6 +205,8 @@ public class LevelEditor : MonoBehaviour
 
             if (!Directory.Exists(filePath))
                 CreateSaveDirectory();
+
+            newLevel.vir = gameManager.array;
 
             string levelstr = JsonConvert.SerializeObject(newLevel);
             File.WriteAllText(Application.dataPath + "/Resources/Levels/" + stageName.text + ".json", levelstr);

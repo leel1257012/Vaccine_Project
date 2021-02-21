@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     public void PlaceObject()       // placing virus
     {
-        if(draggingObject != null && currentContainer != null)
+        if(draggingObject != null && currentContainer != null &&
+            (currentContainer.GetComponent<ObjectContainer>().editable == true || editMode == true))
         {
 
             //Debug.Log(currentContainer.transform.position);

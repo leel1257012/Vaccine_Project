@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class ObjectContainer : MonoBehaviour, IPointerDownHandler
 {
     public bool isFull = false;
+    public bool editable = true;
+    public bool disabled = false;
     public GameManager gameManager;
     public Image backgroundImage;
     private Color32 cur = new Color32(0, 0, 0, 83);
@@ -32,7 +34,8 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameManager.draggingObject != null && isFull == false)
+        if(gameManager.draggingObject != null && isFull == false && 
+            (editable == true || gameManager.editMode == true))
         {
             gameManager.currentContainer = this.gameObject;
             backgroundImage.color = new Color32(56, 0, 0, 152);
@@ -50,7 +53,8 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(gameManager.draggingObject == null && isFull)
+        if(gameManager.draggingObject == null && isFull &&          //empty a full container
+            (editable == true || gameManager.editMode == true))
         {
             isFull = false;
             gameManager.empty--;
@@ -58,5 +62,24 @@ public class ObjectContainer : MonoBehaviour, IPointerDownHandler
             backgroundImage.sprite = emptyCard.GetComponent<Image>().sprite;
             backgroundImage.color = cur;
         }
+
+        else if (gameManager.draggingObject == null && !isFull &&        //disable an empty container
+            !disabled && gameManager.editMode == true)
+        {
+            disabled = true;
+            gameManager.array[y - 1, x - 1] = -1;
+            backgroundImage.color = new Color32(255, 0, 0, 83);
+        }
+
+        else if (gameManager.draggingObject == null && !isFull &&        //enable an disabled container
+            disabled && gameManager.editMode == true)
+        {
+            disabled = false;
+            gameManager.array[y - 1, x - 1] = 0;
+            backgroundImage.color = cur;
+        }
+
+
+
     }
 }
