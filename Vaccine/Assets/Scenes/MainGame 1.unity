@@ -4139,12 +4139,12 @@ PrefabInstance:
     - target: {fileID: 9045649702168430834, guid: 4b36685a909b33349b62873c79c44447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7
+      value: -1.01
       objectReference: {fileID: 0}
     - target: {fileID: 9045649702168430834, guid: 4b36685a909b33349b62873c79c44447,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.78
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 9045649702168430834, guid: 4b36685a909b33349b62873c79c44447,
         type: 3}
@@ -7142,12 +7142,12 @@ PrefabInstance:
     - target: {fileID: 5815987201013058180, guid: 0032ef55e00f5d14191051e3568ccd5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.13
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5815987201013058180, guid: 0032ef55e00f5d14191051e3568ccd5b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -1.71
       objectReference: {fileID: 0}
     - target: {fileID: 5815987201013058180, guid: 0032ef55e00f5d14191051e3568ccd5b,
         type: 3}
@@ -8294,6 +8294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoughBacteria
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596782585401661219, guid: 6abf18896ea7aba44844bce08ddd64f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6abf18896ea7aba44844bce08ddd64f5, type: 3}
