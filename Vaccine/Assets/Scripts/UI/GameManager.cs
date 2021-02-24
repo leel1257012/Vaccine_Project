@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public bool start = false;
+    public bool panelOpened = false;
 
     public int[,] array = new int[5, 10];
 
