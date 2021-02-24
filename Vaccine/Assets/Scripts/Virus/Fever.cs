@@ -11,9 +11,9 @@ public class Fever : VirusClass
     protected override void Start()
     {
         base.Start();
-        oriSpeed = 0.125f;
+        oriSpeed = 0.15f;
         speed = oriSpeed;
-        MaxHealth = Health = 10;
+        MaxHealth = Health = 15;
     }
 
     public override void GetDamaged(float damage)

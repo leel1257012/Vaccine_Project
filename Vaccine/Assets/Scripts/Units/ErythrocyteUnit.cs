@@ -5,6 +5,8 @@ using UnityEngine;
 public class ErythrocyteUnit : Unit
 {
     float speed = 0.45f;
+    public bool moveRight = true;
+
     protected override void Start()
     {
         base.Start();
@@ -13,7 +15,7 @@ public class ErythrocyteUnit : Unit
     protected override Queue<IEnumerator> DecideNextRoutine()
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
-
+        
         nextRoutines.Enqueue(NewActionRoutine(Move()));
 
         return nextRoutines;
@@ -22,17 +24,41 @@ public class ErythrocyteUnit : Unit
     private IEnumerator Move()
     {
         if (gameManager.start)
-            yield return MoveRoutine(GetObjectPos() + new Vector3(speed, 0, 0), 0.1f);
+        {
+            if (moveRight)
+            {
+                if (gameObject.transform.position.x > 6f)
+                {
+                    moveRight = false;
+                    yield return MoveRoutine(GetObjectPos() + new Vector3(-speed * 10, 0, 0), 1f);
+                }
+                else
+                {
+                    yield return MoveRoutine(GetObjectPos() + new Vector3(speed, 0, 0), 0.1f);
+                }
+            }
+            else
+            {
+                if (gameObject.transform.position.x < -5f)
+                {
+                    moveRight = true;
+                    yield return MoveRoutine(GetObjectPos() + new Vector3(speed * 10, 0, 0), 1f);
+                }
+                else
+                {
+                    yield return MoveRoutine(GetObjectPos() + new Vector3(-speed, 0, 0), 0.1f);
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Virus")
+        if (collision.gameObject.tag == "Virus")
         {
             Destroy(gameObject);
             BuffSameRow();
-        }
-        
+        }     
     }
     private void BuffSameRow()
     {

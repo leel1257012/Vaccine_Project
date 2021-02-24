@@ -11,9 +11,9 @@ public class Sneeze : VirusClass
     protected override void Start()
     {
         base.Start();
-        oriSpeed = 0.075f;
+        oriSpeed = 0.1f;
         speed = oriSpeed;
-        MaxHealth = Health = 20;
+        MaxHealth = Health = 30;
     }
 
     public override void GetDamaged(float damage)
