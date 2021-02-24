@@ -27,6 +27,7 @@ public class InGameUI : MonoBehaviour
         InjectionUI.SetActive(true);
         TimeStampButton.interactable = false;
         InjectButton.interactable = false;
+        gameManager.panelOpened = true;
     }
 
     public void inject()
@@ -36,6 +37,7 @@ public class InGameUI : MonoBehaviour
             TimeStampButton.interactable = false;
             InjectButton.interactable = false;
             emptyPanel.SetActive(true);
+            gameManager.panelOpened = true;
         }
         else
         {
@@ -53,6 +55,7 @@ public class InGameUI : MonoBehaviour
         emptyPanel.SetActive(false);
         TimeStampButton.interactable = true;
         InjectButton.interactable = true;
+        gameManager.panelOpened = false;
     }
 
 
@@ -66,6 +69,7 @@ public class InGameUI : MonoBehaviour
         InjectionUI.SetActive(false);
         TimeStampButton.interactable = true;
         InjectButton.interactable = true;
+        gameManager.panelOpened = false;
     }
 
 
