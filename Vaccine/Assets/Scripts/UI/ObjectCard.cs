@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject object_Drag;
     //public GameObject object_Game;
@@ -14,9 +14,13 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     private GameManager gameManager;
     public Virus virus;
 
+    [SerializeField]
+    private GameObject status;
+
     private void Start()
     {
         gameManager = GameManager.instance;
+        status = GameObject.Find("Canvas").transform.Find("Status").gameObject;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -38,5 +42,19 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
         gameManager.PlaceObject();
         gameManager.draggingObject = null;
         Destroy(objectDragInstance);
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        status.SetActive(true);
+        status.GetComponent<Transform>().position = Input.mousePosition;
+
+        //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
+        //status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
+        //status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        status.SetActive(false); 
     }
 }

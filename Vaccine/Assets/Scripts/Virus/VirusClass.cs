@@ -160,16 +160,18 @@ public abstract class VirusClass : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        /*
         status.SetActive(true);
         status.GetComponent<Transform>().position = Input.mousePosition;
 
-        //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
+        status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
         status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
-        //status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+        status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+        */
     }
     private void OnMouseExit()
     {
-        status.SetActive(false);
+        //status.SetActive(false);
     }
 }
 
