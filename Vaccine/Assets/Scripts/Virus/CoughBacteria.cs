@@ -11,7 +11,7 @@ public class CoughBacteria : VirusClass
     {
         base.Start();
         MaxHealth = Health = 30;
-        oriSpeed = 0.1f;
+        oriSpeed = 0.15f;
         speed = oriSpeed;
     }
 
@@ -44,9 +44,9 @@ public class CoughBacteria : VirusClass
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         target.GetComponent<Unit>().GetDamaged(damage);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
 
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
     }
 }

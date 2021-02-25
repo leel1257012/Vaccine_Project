@@ -14,7 +14,7 @@ public class SweatBacteria : VirusClass
     {
         base.Start();
         MaxHealth = Health = 30;
-        oriSpeed = 0.065f;
+        oriSpeed = 0.09375f;
         speed = oriSpeed;
     }
 

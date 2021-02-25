@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ErythrocyteUnit : Unit
 {
-    float speed = 0.45f;
+    float speed = 0.6f;
     public bool moveRight = true;
 
     protected override void Start()
