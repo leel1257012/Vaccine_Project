@@ -6,8 +6,6 @@ public class DefinitelyNotNeuron : Unit
 {    
     [SerializeField]
     private float range = 9.5f;
-    [SerializeField]
-    private float damage = 2.0f;
     private int debuffCount = 0;
 
     protected override void Start()
@@ -16,6 +14,7 @@ public class DefinitelyNotNeuron : Unit
         MaxHealth = Health = 9;
         OriAttackSpeed = 2.0f;
         attackSpeedInterval = OriAttackSpeed;
+        Damage = 2.0f;
     }
 
     public override void GetDamaged(float damage)
@@ -66,7 +65,7 @@ public class DefinitelyNotNeuron : Unit
             {
                 gameObject.GetComponent<Transform>().localScale = new Vector3(0.7425f, 0.37125f, 0.37125f);
                 foreach (GameObject element in target)
-                    element.GetComponent<VirusClass>().GetDamaged(damage);
+                    element.GetComponent<VirusClass>().GetDamaged(Damage);
                 yield return new WaitForSeconds(0.5f);
                 gameObject.GetComponent<Transform>().localScale = new Vector3(0.37125f, 0.37125f, 0.37125f);
             }

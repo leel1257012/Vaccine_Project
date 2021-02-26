@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CoughBacteria : VirusClass
 {
-    [SerializeField]
-    private float damage = 1.0f;
 
     protected override void Start()
     {
         base.Start();
         MaxHealth = Health = 30;
+        OriAttackSpeed = 1.0f;
+        Damage = 1.0f;
         oriSpeed = 0.15f;
         speed = oriSpeed;
     }
@@ -43,10 +43,10 @@ public class CoughBacteria : VirusClass
     private IEnumerator Cough()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        target.GetComponent<Unit>().GetDamaged(damage);
-        yield return new WaitForSeconds(0.5f);
+        target.GetComponent<Unit>().GetDamaged(Damage);
+        yield return new WaitForSeconds(OriAttackSpeed / 2);
 
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(OriAttackSpeed / 2);
     }
 }

@@ -15,6 +15,8 @@ public class Macrophage : Unit
     {
         base.Start();
         MaxHealth = Health = 9;
+        OriAttackSpeed = 0;
+        Damage = 0;
     }
 
     public override void GetDamaged(float damage)

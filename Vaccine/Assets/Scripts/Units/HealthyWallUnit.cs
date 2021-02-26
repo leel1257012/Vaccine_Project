@@ -8,6 +8,8 @@ public class HealthyWallUnit : Unit
     {
         base.Start();
         MaxHealth = Health = 20;
+        OriAttackSpeed = 0;
+        Damage = 0;
     }
 
     public override void GetDamaged(float damage)

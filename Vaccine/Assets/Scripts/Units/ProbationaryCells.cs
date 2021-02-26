@@ -19,6 +19,7 @@ public class ProbationaryCells : Unit
         MaxHealth = Health = 5;
         OriAttackSpeed = 0.25f;
         attackSpeedInterval = OriAttackSpeed;
+        Damage = 3.0f;
         shootPos = gameObject.transform.position;
     }
 

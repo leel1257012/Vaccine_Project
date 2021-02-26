@@ -6,17 +6,16 @@ using System;
 public class AngryCactus : Unit
 {
     [SerializeField]
-    private float damage = 1.0f;
-    [SerializeField]
     private float attackInterval = 0.5f;
     private List<GameObject> target = new List<GameObject>();
 
     protected override void Start()
     {
         base.Start();
-        MaxHealth = Health = 999;
+        MaxHealth = Health = 0;
         OriAttackSpeed = attackInterval;
         attackSpeedInterval = OriAttackSpeed;
+        Damage = 1.0f;
     }
 
     public override void GetDamaged(float damage)
@@ -41,7 +40,7 @@ public class AngryCactus : Unit
         for(int i = target.Count - 1; i >= 0 ; i--)
         {
             t = target[i];
-            t.GetComponent<VirusClass>().GetDamaged(damage);
+            t.GetComponent<VirusClass>().GetDamaged(Damage);
         }
 
         yield return new WaitForSeconds(interval);

@@ -17,6 +17,7 @@ public abstract class Unit : MonoBehaviour
     public float OriAttackSpeed { get; protected set; }
     public float attackSpeedInterval { get; protected set; }
     private int attackSpeedBuff = 0;
+    public float Damage { get; protected set; }
 
     public bool Invincible = false;
 
@@ -127,7 +128,7 @@ public abstract class Unit : MonoBehaviour
             status.SetActive(true);
             status.GetComponent<Transform>().position = Input.mousePosition;
 
-            //status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + damage;
+            status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + Damage;
             status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
             status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
         }

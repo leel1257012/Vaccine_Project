@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SweatBacteria : VirusClass
 {
-    [SerializeField]
-    private float damage = 1.0f;
-
     RaycastHit2D[] hits;
     float maxDistance = 0.0f;
 
@@ -14,6 +11,8 @@ public class SweatBacteria : VirusClass
     {
         base.Start();
         MaxHealth = Health = 30;
+        OriAttackSpeed = 1.0f;
+        Damage = 1.0f;
         oriSpeed = 0.09375f;
         speed = oriSpeed;
     }
@@ -49,7 +48,7 @@ public class SweatBacteria : VirusClass
         DetectSweat();
 
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        target.GetComponent<Unit>().GetDamaged(damage);
+        target.GetComponent<Unit>().GetDamaged(Damage);
         yield return new WaitForSeconds(0.5f);
 
         DetectSweat();

@@ -10,6 +10,9 @@ public class ErythrocyteUnit : Unit
     protected override void Start()
     {
         base.Start();
+        MaxHealth = 0;
+        OriAttackSpeed = 0;
+        Damage = 0;
     }
 
     protected override Queue<IEnumerator> DecideNextRoutine()
