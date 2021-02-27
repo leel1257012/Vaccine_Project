@@ -63,11 +63,11 @@ public class DefinitelyNotNeuron : Unit
             }
             if (find)
             {
-                gameObject.GetComponent<Transform>().localScale = new Vector3(0.7425f, 0.37125f, 0.37125f);
+                gameObject.GetComponent<Transform>().localScale = new Vector3(0.288f, 0.144f, 0.144f);
                 foreach (GameObject element in target)
                     element.GetComponent<VirusClass>().GetDamaged(Damage);
                 yield return new WaitForSeconds(0.5f);
-                gameObject.GetComponent<Transform>().localScale = new Vector3(0.37125f, 0.37125f, 0.37125f);
+                gameObject.GetComponent<Transform>().localScale = new Vector3(0.144f, 0.144f, 0.144f);
             }
         }
 
