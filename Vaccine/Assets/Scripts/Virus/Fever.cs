@@ -40,11 +40,15 @@ public class Fever : VirusClass
     {
         animator.SetTrigger("Destruct");
         for (float t = 0; t < interval; t += Time.deltaTime) yield return null;
-        if(target.GetComponent<Unit>() != null)
+        if(target != null)
         {
-            target.GetComponent<Unit>().GetDamaged(damage);
-            
+            if (target.GetComponent<Unit>() != null)
+            {
+                target.GetComponent<Unit>().GetDamaged(damage);
+
+            }
         }
+        
         gameObject.GetComponent<VirusClass>().GetDamaged(MaxHealth);
 
 
