@@ -51,42 +51,65 @@ public class LevelEditor : MonoBehaviour
 
     public void CellInstantiate(Level level)
     {
-        selected = false;
-        selectedUnit = 0;
-
-        foreach (Transform child in vaccineUnits)
+        if (gameManager.editMode)
         {
-            if (child.childCount > 0)
+            selected = false;
+            selectedUnit = 0;
+
+            foreach (Transform child in vaccineUnits)
             {
-                Destroy(child.GetChild(0).gameObject);
+                if (child.childCount > 0)
+                {
+                    Destroy(child.GetChild(0).gameObject);
+                }
+            }
+
+            //int index = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    int temp = i + j * 5;
+                    placements[temp].GetComponent<UnitPlacements>().instantiateUnit(level.arr[i, j]);
+                    newLevel.arr[i, j] = level.arr[i, j];
+
+                }
+            }
+
+            coughc.text = level.cough.ToString();
+            feverc.text = level.fever.ToString();
+            redEyesc.text = level.redEyes.ToString();
+            sneezec.text = level.sneeze.ToString();
+            insomniac.text = level.insomnia.ToString();
+            sweatc.text = level.sweat.ToString();
+            stuporc.text = level.stupor.ToString();
+            vomitc.text = level.vomit.ToString();
+            baldc.text = level.bald.ToString();
+            snotc.text = level.snot.ToString();
+
+            applyRestriction();
+            emptyInputRestriction();
+        }
+        else //not edit mode
+        {
+            foreach(GameObject temp in placements)
+            {
+                temp.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+            }
+
+
+            //int index = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    int temp = i + j * 5;
+                    placements[temp].GetComponent<UnitPlacements>().instantiateUnit(level.arr[i, j]);
+
+                }
             }
         }
-
-        //int index = 0;
-        for(int i=0; i<5; i++)
-        {
-            for(int j=0; j<8; j++)
-            {
-                int temp = i + j * 5;
-                placements[temp].GetComponent<UnitPlacements>().instantiateUnit(level.arr[i, j]);
-                newLevel.arr[i, j] = level.arr[i, j];
-                
-            }
-        }
-
-        coughc.text = level.cough.ToString();
-        feverc.text = level.fever.ToString();
-        redEyesc.text = level.redEyes.ToString();
-        sneezec.text = level.sneeze.ToString();
-        insomniac.text = level.insomnia.ToString();
-        sweatc.text = level.sweat.ToString();
-        stuporc.text = level.stupor.ToString();
-        vomitc.text = level.vomit.ToString();
-        baldc.text = level.bald.ToString();
-        snotc.text = level.snot.ToString();
-
-        applyRestriction();
-        emptyInputRestriction();
+        
         
     }
 
@@ -165,6 +188,7 @@ public class LevelEditor : MonoBehaviour
     //        return;
     //    }
     //    CellInstantiate(loadLevel);
+    //    virusInstantiate(loadLevel);
     //    Debug.Log("Load complete.");
     //}
 
