@@ -24,7 +24,7 @@ public class StickyUnit : Unit
 
     private void Update()
     {
-        Debug.Log(cur.transform.position);
+        //Debug.Log(cur.transform.position);
         if (!colliding)
         {
             gameObject.transform.position = cur.transform.position;
