@@ -79,8 +79,12 @@ public class UnitPlacements : MonoBehaviour, IPointerDownHandler
         }
         else
         {
-            gameObject.GetComponent<Image>().color = cur;
-            isFull = false;
+            if (gameManager.editMode)
+            {
+                gameObject.GetComponent<Image>().color = cur;
+                isFull = false;
+            }
+            
         }
 
     }

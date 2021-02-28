@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameStartButton : MonoBehaviour
 {
-    public void LoadVaccineSelectScene()
+    public void LoadImmuneSelectScene()
     {
-        SceneManager.LoadScene("VaccineSelectScene");
+        SceneManager.LoadScene("ImmuneSelectScene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
