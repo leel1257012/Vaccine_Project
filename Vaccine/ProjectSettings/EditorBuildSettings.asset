@@ -11,7 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ImmuneSelectScene.unity
     guid: 5ce7e11930f374442bf1bee6c64233bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/InGame1.unity
     guid: ba81fc4dde22ab84da97c22a391836da
+  - enabled: 1
+    path: Assets/Scenes/InGame2.unity
+    guid: 9ba39d40f2f7d2945a712f891422342d
+  - enabled: 0
+    path: Assets/Scenes/InGame3.unity
+    guid: c278771ba5f27964d957c41b7f943096
   m_configObjects: {}

@@ -11,6 +11,6 @@ public class SceneChange : MonoBehaviour
     public void call()
     {
         DontDestroyOnLoad(stageNameObject);
-        SceneManager.LoadScene("InGame3");
+        SceneManager.LoadScene("InGame2");
     }
 }

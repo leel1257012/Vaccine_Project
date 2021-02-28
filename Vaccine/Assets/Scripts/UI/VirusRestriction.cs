@@ -58,7 +58,7 @@ public class VirusRestriction : MonoBehaviour
             }
         }
 
-        Debug.Log(temp);
+        //Debug.Log(temp);
         gameObject.GetComponent<Text>().text = (counter - temp).ToString();
         if (counter - temp > 0) virusCard.GetComponent<ObjectCard>().exist = true;
         else virusCard.GetComponent<ObjectCard>().exist = false;

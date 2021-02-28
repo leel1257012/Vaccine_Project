@@ -26,6 +26,7 @@ public class LevelEditor : MonoBehaviour
     public InputField coughI, feverI, redEyesI, sneezeI, insomniaI, sweatI, stuporI, vomitI, baldI, snotI;
     public List<Image> virusSprites;
     private string currentStage;
+    private GameObject temp1;
 
 
     private void Awake()
@@ -45,8 +46,14 @@ public class LevelEditor : MonoBehaviour
             emptyInputRestriction();
         }
 
-        currentStage = GameObject.Find("stageNameString").GetComponent<SceneChange>().stageName;
-        LoadLevel(currentStage);
+        temp1 = GameObject.Find("stageNameString");
+        
+        if (temp1 != null) {
+
+            currentStage = temp1.GetComponent<SceneChange>().stageName;
+            LoadLevel(currentStage);
+
+        } 
     }
 
     public void CellInstantiate(Level level)
