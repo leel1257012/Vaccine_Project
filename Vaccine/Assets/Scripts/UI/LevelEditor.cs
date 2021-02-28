@@ -33,6 +33,7 @@ public class LevelEditor : MonoBehaviour
         instance = this;
 
         newLevel = new Level();
+        loadLevel = new Level();
         emptyLevel = new Level();
 
         
