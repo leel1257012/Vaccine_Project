@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public abstract class VirusClass : MonoBehaviour
 {
@@ -164,6 +165,7 @@ public abstract class VirusClass : MonoBehaviour
         status.SetActive(true);
         status.GetComponent<Transform>().position = Input.mousePosition;
 
+        status.GetComponent<Transform>().Find("Image").GetComponent<Image>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + Damage;
         status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
         status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
