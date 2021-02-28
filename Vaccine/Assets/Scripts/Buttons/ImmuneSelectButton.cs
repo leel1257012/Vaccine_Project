@@ -14,6 +14,7 @@ public class ImmuneSelectButton : MonoBehaviour
             sc.stageName = "ws1";
         else if (gameObject.name == "3")
             sc.stageName = "SJ";
+        else sc.stageName = "hj";
 
         sc.call();
     }

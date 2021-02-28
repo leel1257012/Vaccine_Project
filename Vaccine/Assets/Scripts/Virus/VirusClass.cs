@@ -23,6 +23,8 @@ public abstract class VirusClass : MonoBehaviour
 
     public bool Invincible = false;
 
+    private GameManager gameManager;
+
     protected Animator animator;
 
     protected Collider2D col;
@@ -39,6 +41,7 @@ public abstract class VirusClass : MonoBehaviour
         col = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         status = GameObject.Find("Canvas").transform.Find("Status").gameObject;
+        gameManager = GameManager.instance;
     }
 
     private void Update()
@@ -52,7 +55,12 @@ public abstract class VirusClass : MonoBehaviour
     public virtual void GetDamaged(float damage)
     {
         Health -= damage;
-        if (Health <= 0) Destroy(gameObject);
+        if (Health <= 0)
+        {
+            gameManager.virusCount--;
+            Destroy(gameObject);
+
+        } 
 
     }
 

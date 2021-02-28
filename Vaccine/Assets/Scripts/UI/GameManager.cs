@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject draggingObject;
     public GameObject currentContainer;
+    public GameObject success;
+    public Text virusText;
+    public int virusCount;
     public int empty;
     public bool editMode = false;
 
@@ -21,6 +25,16 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         empty = 0;
+    }
+
+    private void Update()
+    {
+        virusText.text = virusCount.ToString();
+        if(start && virusCount <= 0)
+        {
+            start = false;
+            success.gameObject.SetActive(true);
+        }
     }
 
     public void PlaceObject()       // placing virus
@@ -55,5 +69,21 @@ public class GameManager : MonoBehaviour
             /* manage array */
             
         }
+    }
+
+    public void countVirus()
+    {
+        for(int i=0; i<5; i++)
+        {
+            for(int j=0; j<10; j++)
+            {
+                if (array[i, j] != 0 && array[i, j] != -1) virusCount++;
+            }
+        }
+    }
+
+    public void returnMenu()
+    {
+        SceneManager.LoadScene("ImmuneSelectScene");
     }
 }
