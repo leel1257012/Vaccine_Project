@@ -46,6 +46,9 @@ public class InGameUI : MonoBehaviour
             TimeStampButton.gameObject.SetActive(false);
             InjectButton.gameObject.SetActive(false);
             if(gameManager.editMode) editPanel.gameObject.SetActive(false);
+            gameManager.countVirus();
+            gameManager.virusText.gameObject.SetActive(true);
+            
         }
 
     }
