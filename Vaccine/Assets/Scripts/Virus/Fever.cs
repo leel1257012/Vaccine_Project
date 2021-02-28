@@ -11,6 +11,8 @@ public class Fever : VirusClass
     protected override void Start()
     {
         base.Start();
+        Damage = 7.0f;
+        OriAttackSpeed = 0f;
         oriSpeed = 0.15f;
         speed = oriSpeed;
         MaxHealth = Health = 15;
