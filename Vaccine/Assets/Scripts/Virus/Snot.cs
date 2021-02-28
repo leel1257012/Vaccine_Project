@@ -5,12 +5,12 @@ using UnityEngine;
 public class Snot : VirusClass
 {
 
-    private float interval = 1.0f;
-    private float damage = 1.0f;
 
     protected override void Start()
     {
         base.Start();
+        Damage = 1.0f;
+        OriAttackSpeed = 1.0f;
         oriSpeed = 0.1f;
         speed = oriSpeed;
         MaxHealth = Health = 15;
@@ -30,7 +30,7 @@ public class Snot : VirusClass
         if (!collided) nextRoutines.Enqueue(NewActionRoutine(Move()));
         else
         {
-            nextRoutines.Enqueue(NewActionRoutine(MeleeAttack(interval)));
+            nextRoutines.Enqueue(NewActionRoutine(MeleeAttack(OriAttackSpeed)));
         }
 
         return nextRoutines;
@@ -39,7 +39,7 @@ public class Snot : VirusClass
     private IEnumerator MeleeAttack(float interval)
     {
         animator.SetTrigger("Attack");
-        target.GetComponent<Unit>().GetDamaged(damage);
+        target.GetComponent<Unit>().GetDamaged(Damage);
         target.GetComponent<Unit>().ChangeAttackInterval(2f);
         yield return new WaitForSeconds(interval);
 

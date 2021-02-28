@@ -17,6 +17,7 @@ public class LeukocyteUnit : Unit
         base.Start();
         MaxHealth = Health = 9;
         OriAttackSpeed = 1.0f;
+        Damage = 3.0f;
         attackSpeedInterval = OriAttackSpeed;
         shootPos = gameObject.transform.position;
     }

@@ -11,6 +11,7 @@ public class StickyUnit : Unit
     protected override void Start()
     {
         base.Start();
+        Damage = 0f;
         cur = new GameObject();
         cur.transform.position = gameObject.transform.position;
         cur.transform.localScale = gameObject.transform.localScale;

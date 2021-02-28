@@ -21,6 +21,7 @@ public class MozziPichi : Unit
     {
         base.Start();
         MaxHealth = Health = 9;
+        Damage = 0f;
         ogX = gameObject.transform.localScale.x;
         ogY = gameObject.transform.localScale.y;
     }
