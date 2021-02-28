@@ -15,6 +15,7 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     private GameObject objectDragInstance;
     private GameManager gameManager;
     public Virus virus;
+    public bool exist = false;
 
     [SerializeField]
     private GameObject status;
@@ -29,23 +30,35 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
 
     public void OnDrag(PointerEventData eventData)
     {
-        objectDragInstance.transform.position = Input.mousePosition;
+        if(exist == true)
+        {
+            objectDragInstance.transform.position = Input.mousePosition;
+        }
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        objectDragInstance = Instantiate(object_Drag, canvas.transform);
-        objectDragInstance.transform.position = Input.mousePosition;
-        objectDragInstance.GetComponent<objectDragging>().card = this;
+        if(exist == true)
+        {
+            objectDragInstance = Instantiate(object_Drag, canvas.transform);
+            objectDragInstance.transform.position = Input.mousePosition;
+            objectDragInstance.GetComponent<objectDragging>().card = this;
 
-        gameManager.draggingObject = objectDragInstance;
+            gameManager.draggingObject = objectDragInstance;
+        }
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        gameManager.PlaceObject();
-        gameManager.draggingObject = null;
-        Destroy(objectDragInstance);
+        if(exist == true)
+        {
+            gameManager.PlaceObject();
+            gameManager.draggingObject = null;
+            Destroy(objectDragInstance);
+        }
+
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
