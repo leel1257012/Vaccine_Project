@@ -16,6 +16,7 @@ public class AngryCactus : Unit
         OriAttackSpeed = attackInterval;
         attackSpeedInterval = OriAttackSpeed;
         Damage = 1.0f;
+        Phrase = "머리를 밟고 지나가는 세균들에게 데미지를 준다.";
     }
 
     public override void GetDamaged(float damage)

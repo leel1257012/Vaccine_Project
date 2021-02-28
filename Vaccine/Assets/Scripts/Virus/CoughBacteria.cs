@@ -11,6 +11,7 @@ public class CoughBacteria : VirusClass
         MaxHealth = Health = 30;
         OriAttackSpeed = 1.0f;
         Damage = 1.0f;
+        Phrase = "빠르게 기침하여 세포들을 감염시킨다.";
         oriSpeed = 0.15f;
         speed = oriSpeed;
     }

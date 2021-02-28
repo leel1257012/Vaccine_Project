@@ -25,7 +25,7 @@ public class LevelEditor : MonoBehaviour
     public Text coughc, feverc, redEyesc, sneezec, insomniac, sweatc, stuporc, vomitc, baldc, snotc;
     public InputField coughI, feverI, redEyesI, sneezeI, insomniaI, sweatI, stuporI, vomitI, baldI, snotI;
     public List<Image> virusSprites;
-
+    private string currentStage;
 
 
     private void Awake()
@@ -33,10 +33,8 @@ public class LevelEditor : MonoBehaviour
         instance = this;
 
         newLevel = new Level();
+        loadLevel = new Level();
         emptyLevel = new Level();
-
-        
-        
     }
 
     private void Start()
@@ -46,7 +44,9 @@ public class LevelEditor : MonoBehaviour
         {
             emptyInputRestriction();
         }
-        
+
+        currentStage = GameObject.Find("stageNameString").GetComponent<SceneChange>().stageName;
+        LoadLevel(currentStage);
     }
 
     public void CellInstantiate(Level level)
@@ -174,23 +174,23 @@ public class LevelEditor : MonoBehaviour
         Debug.Log("Load complete.");
     }
 
-    //public void LoadLevel(string stageName)
-    //{
-    //    try
-    //    {
-    //        string str = File.ReadAllText(Application.dataPath + "/Resources/Levels/" + stageName + ".json");
-    //        loadLevel = JsonConvert.DeserializeObject<Level>(str);
+    public void LoadLevel(string stageName)
+    {
+        try
+        {
+            string str = File.ReadAllText(Application.dataPath + "/Resources/Levels/" + stageName + ".json");
+            loadLevel = JsonConvert.DeserializeObject<Level>(str);
 
-    //    }
-    //    catch (FileNotFoundException e)
-    //    {
-    //        Debug.Log(e);
-    //        return;
-    //    }
-    //    CellInstantiate(loadLevel);
-    //    virusInstantiate(loadLevel);
-    //    Debug.Log("Load complete.");
-    //}
+        }
+        catch (FileNotFoundException e)
+        {
+            Debug.Log(e);
+            return;
+        }
+        CellInstantiate(loadLevel);
+        virusInstantiate(loadLevel);
+        Debug.Log("Load complete.");
+    }
 
 
     public void NewLevel()

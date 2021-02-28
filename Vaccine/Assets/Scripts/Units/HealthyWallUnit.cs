@@ -10,6 +10,7 @@ public class HealthyWallUnit : Unit
         MaxHealth = Health = 20;
         OriAttackSpeed = 0;
         Damage = 0;
+        Phrase = "병균의 이동을 막아 세포 친구들을 보호해준다.";
     }
 
     public override void GetDamaged(float damage)

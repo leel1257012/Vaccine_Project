@@ -20,6 +20,7 @@ public class ProbationaryCells : Unit
         OriAttackSpeed = 0.25f;
         attackSpeedInterval = OriAttackSpeed;
         Damage = 3.0f;
+        Phrase = "빠르게 다가오는 세균을 향해 공격하지만, 일정 시간 공격 후 휴식 시간을 가진다.";
         shootPos = gameObject.transform.position;
     }
 

@@ -17,6 +17,7 @@ public class Macrophage : Unit
         MaxHealth = Health = 9;
         OriAttackSpeed = 0;
         Damage = 0;
+        Phrase = "다가오는 세균 한 마리를 삼킨 뒤 소화 시킨다. 5초가 지나면 적혈구로 만들어 내뱉는다. 한번에 한 마리만 삼킬 수 있다.";
     }
 
     public override void GetDamaged(float damage)
