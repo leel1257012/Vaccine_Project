@@ -13,6 +13,7 @@ public class ErythrocyteUnit : Unit
         MaxHealth = 0;
         OriAttackSpeed = 0;
         Damage = 0;
+        Phrase = "돌아다니며 세균을 찾는다. 세균을 발견하면 해당 라인의 세포 친구들에게 힘을 북돋아 준다.";
     }
 
     protected override Queue<IEnumerator> DecideNextRoutine()

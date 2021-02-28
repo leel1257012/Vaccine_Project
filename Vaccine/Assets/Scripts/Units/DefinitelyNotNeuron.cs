@@ -15,6 +15,7 @@ public class DefinitelyNotNeuron : Unit
         OriAttackSpeed = 2.0f;
         attackSpeedInterval = OriAttackSpeed;
         Damage = 2.0f;
+        Phrase = "다가오는 세균들을 향해 길게 돌기를 뻗어 세균들을 관통하여 공격한다.";
     }
 
     public override void GetDamaged(float damage)

@@ -13,6 +13,7 @@ public class SweatBacteria : VirusClass
         MaxHealth = Health = 30;
         OriAttackSpeed = 1.0f;
         Damage = 1.0f;
+        Phrase = "세포를 향해 다가가며 땀을 흘린다. 땀 위에 있는 세균들은 이동속도가 빨라지며 세포들은 데미지를 입는다.";
         oriSpeed = 0.09375f;
         speed = oriSpeed;
     }

@@ -69,7 +69,12 @@ public class UnitPlacements : MonoBehaviour, IPointerDownHandler
 
     public void instantiateUnit(int unit)
     {
-        if(unit != 0)
+        /*if (gameManager == null)
+            gameManager = GameManager.instance;
+        if(levelEditor == null)
+            levelEditor = LevelEditor.instance;*/
+        Start();
+        if (unit != 0)
         {
             Instantiate(levelEditor.unitPrefabs[unit],
                 spawnPoints.spawnPoints[location].transform.position,

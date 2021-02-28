@@ -14,6 +14,7 @@ public abstract class VirusClass : MonoBehaviour
     public float MaxHealth { get; protected set; }
     public float OriAttackSpeed { get; protected set; }
     public float Damage { get; protected set; }
+    public string Phrase;
     public float speed { get; protected set; }
     public float oriSpeed;
     int speedBuffed = 0;
@@ -168,11 +169,12 @@ public abstract class VirusClass : MonoBehaviour
         status.GetComponent<Transform>().Find("Image").GetComponent<Image>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + Damage;
         status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
-        status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+        status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AS: " + Math.Round((1 / OriAttackSpeed), 2);
+        status.GetComponent<Transform>().Find("Phrase").GetComponent<Text>().text = Phrase;
     }
     private void OnMouseExit()
     {
-        //status.SetActive(false);
+        status.SetActive(false);
     }
 }
 

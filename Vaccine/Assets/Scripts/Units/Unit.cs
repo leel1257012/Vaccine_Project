@@ -20,6 +20,8 @@ public abstract class Unit : MonoBehaviour
     private int attackSpeedBuff = 0;
     public float Damage { get; protected set; }
 
+    public string Phrase;
+
     public bool Invincible = false;
 
     public bool debuff = false;
@@ -132,7 +134,8 @@ public abstract class Unit : MonoBehaviour
             status.GetComponent<Transform>().Find("Image").GetComponent<Image>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
             status.GetComponent<Transform>().Find("Damage").GetComponent<TextMeshProUGUI>().text = "Damage: " + Damage;
             status.GetComponent<Transform>().Find("Health").GetComponent<TextMeshProUGUI>().text = "Health: " + MaxHealth;
-            status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AttackSpeed: " + Math.Round((1 / OriAttackSpeed), 2);
+            status.GetComponent<Transform>().Find("AttackSpeed").GetComponent<TextMeshProUGUI>().text = "AS: " + Math.Round((1 / OriAttackSpeed), 2);
+            status.GetComponent<Transform>().Find("Phrase").GetComponent<Text>().text = Phrase;
         }
     }
     private void OnMouseExit()
