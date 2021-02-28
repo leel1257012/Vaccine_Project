@@ -35,36 +35,40 @@ public class UnitPlacements : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (levelEditor.selected && !isFull)
+        if (!gameManager.start && gameManager.editMode)
         {
-            isFull = true;
-            levelEditor.selected = false;
-            levelEditor.newLevel.arr[y - 1, x - 1] = levelEditor.selectedUnit;
-            //Debug.Log(levelEditor.newLevel.arr[y - 1, x - 1]);
-            Instantiate(levelEditor.unitPrefabs[levelEditor.selectedUnit],
-                spawnPoints.spawnPoints[location].transform.position,
-                Quaternion.identity, vaccineUnits[location].transform);
-            //Debug.Log(location);
-            //Debug.Log(temp);
-            gameObject.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
-        }
-        else if(levelEditor.selected && isFull)
-        {
-            levelEditor.selected = false;
-            levelEditor.newLevel.arr[y - 1, x - 1] = levelEditor.selectedUnit;
-            Destroy(vaccineUnits[location].transform.GetChild(0).gameObject);
-            Instantiate(levelEditor.unitPrefabs[levelEditor.selectedUnit],
-                spawnPoints.spawnPoints[location].transform.position,
-                Quaternion.identity, vaccineUnits[location].transform);
-        }
-        else if(!levelEditor.selected && isFull)
-        {
-            levelEditor.newLevel.arr[y - 1, x - 1] = 0;
-            Destroy(vaccineUnits[location].transform.GetChild(0).gameObject);
-            isFull = false;
-            gameObject.GetComponent<Image>().color = cur;
+            if (levelEditor.selected && !isFull)
+            {
+                isFull = true;
+                levelEditor.selected = false;
+                levelEditor.newLevel.arr[y - 1, x - 1] = levelEditor.selectedUnit;
+                //Debug.Log(levelEditor.newLevel.arr[y - 1, x - 1]);
+                Instantiate(levelEditor.unitPrefabs[levelEditor.selectedUnit],
+                    spawnPoints.spawnPoints[location].transform.position,
+                    Quaternion.identity, vaccineUnits[location].transform);
+                //Debug.Log(location);
+                //Debug.Log(temp);
+                gameObject.GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+            }
+            else if (levelEditor.selected && isFull)
+            {
+                levelEditor.selected = false;
+                levelEditor.newLevel.arr[y - 1, x - 1] = levelEditor.selectedUnit;
+                Destroy(vaccineUnits[location].transform.GetChild(0).gameObject);
+                Instantiate(levelEditor.unitPrefabs[levelEditor.selectedUnit],
+                    spawnPoints.spawnPoints[location].transform.position,
+                    Quaternion.identity, vaccineUnits[location].transform);
+            }
+            else if (!levelEditor.selected && isFull)
+            {
+                levelEditor.newLevel.arr[y - 1, x - 1] = 0;
+                Destroy(vaccineUnits[location].transform.GetChild(0).gameObject);
+                isFull = false;
+                gameObject.GetComponent<Image>().color = cur;
 
+            }
         }
+        
     }
 
     public void instantiateUnit(int unit)
