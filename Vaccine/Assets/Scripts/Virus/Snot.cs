@@ -14,6 +14,7 @@ public class Snot : VirusClass
         oriSpeed = 0.1f;
         speed = oriSpeed;
         MaxHealth = Health = 15;
+        Phrase = "세포에게 콧물을 묻혀 공격 속도를 느리게 만든다.";
     }
 
     public override void GetDamaged(float damage)

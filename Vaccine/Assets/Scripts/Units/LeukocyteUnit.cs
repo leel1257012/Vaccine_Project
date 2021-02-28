@@ -19,6 +19,7 @@ public class LeukocyteUnit : Unit
         OriAttackSpeed = 1.0f;
         Damage = 3.0f;
         attackSpeedInterval = OriAttackSpeed;
+        Phrase = "다가오는 세균을 향해 공격한다. 가장 기본적인 세포이다.";
         shootPos = gameObject.transform.position;
     }
 

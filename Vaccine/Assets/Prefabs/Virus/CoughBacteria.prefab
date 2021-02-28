@@ -94,7 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 51915662965046b4d886e0ba8bfc9518, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 965cb92204d0c104dafc2784e8d89beb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2236b113e8a924479828a4858e0e38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Phrase: 
   oriSpeed: 0
   Invincible: 0
   status: {fileID: 0}
-  damage: 1

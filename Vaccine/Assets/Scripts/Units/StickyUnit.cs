@@ -16,6 +16,7 @@ public class StickyUnit : Unit
         cur.transform.position = gameObject.transform.position;
         cur.transform.localScale = gameObject.transform.localScale;
         MaxHealth = Health = 999;
+        Phrase = "세균이 닿으면 길게 몸을 늘어뜨려서 지나가는 세균들의 이동속도를 감소시킨다.";
     }
 
     private void FixedUpdate()

@@ -22,6 +22,7 @@ public class MozziPichi : Unit
         base.Start();
         MaxHealth = Health = 9;
         Damage = 0f;
+        Phrase = "일정시간마다 붙어있는 세균들을 뒤로 밀어낸다.";
         ogX = gameObject.transform.localScale.x;
         ogY = gameObject.transform.localScale.y;
     }

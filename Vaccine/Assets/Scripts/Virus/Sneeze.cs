@@ -16,6 +16,7 @@ public class Sneeze : VirusClass
         oriSpeed = 0.1f;
         speed = oriSpeed;
         MaxHealth = Health = 30;
+        Phrase = "세포에게 다가가 공격한다. 기침 세균보다 공격 속도가 느리다.";
     }
 
     public override void GetDamaged(float damage)

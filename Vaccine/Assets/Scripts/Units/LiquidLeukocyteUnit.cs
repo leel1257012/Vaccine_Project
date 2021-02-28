@@ -20,6 +20,7 @@ public class LiquidLeukocyteUnit : Unit
         Damage = 3.0f;
         attackSpeedInterval = OriAttackSpeed;
         shootPos = gameObject.transform.position;
+        Phrase = "세균이 어느 라인에 있던지 공격하지만, 귀여운 백혈구 보다 사거리가 짧다.";
     }
 
     public override void GetDamaged(float damage)

@@ -16,6 +16,7 @@ public class Fever : VirusClass
         oriSpeed = 0.15f;
         speed = oriSpeed;
         MaxHealth = Health = 15;
+        Phrase = "세포에게 빠르게 다가가 자신의 몸을 뜨겁게 만들어 자폭한다.";
     }
 
     public override void GetDamaged(float damage)

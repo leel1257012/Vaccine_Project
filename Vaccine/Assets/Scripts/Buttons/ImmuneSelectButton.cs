@@ -8,13 +8,12 @@ public class ImmuneSelectButton : MonoBehaviour
     public SceneChange sc;
     public void ImmuneSelect()
     {
-        /*if (gameObject.name == "1")
+        if (gameObject.name == "1")
             sc.stageName = "mg1";
         else if (gameObject.name == "2")
             sc.stageName = "ws1";
         else if (gameObject.name == "3")
-            sc.stageName = "SJ";*/
-        sc.stageName = "SJ";
+            sc.stageName = "SJ";
 
         sc.call();
     }
